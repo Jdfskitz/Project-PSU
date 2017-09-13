@@ -90,7 +90,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Disorder: 2
     - _DstBlend: 0
-    - _EdgeLength: 0.6
+    - _EdgeLength: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -103,7 +103,7 @@ Material:
     - _MaxHeight01: 1.5
     - _MaxHeight02: 1.5
     - _MaxHeight03: 1.5
-    - _MaxTessellation: 4
+    - _MaxTessellation: 3
     - _Metallic: 0
     - _MinHeight00: 0
     - _MinHeight01: 0.2
