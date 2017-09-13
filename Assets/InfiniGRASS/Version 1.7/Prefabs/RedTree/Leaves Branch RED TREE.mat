@@ -69,7 +69,7 @@ Material:
     m_Floats:
     - _BaseColorYShift: 1
     - _BaseLight: 0
-    - _BulgeScale: 0.5
+    - _BulgeScale: 0.6
     - _BulgeScale_copy: 1.2
     - _BulgeShape: 5
     - _BumpScale: 1
@@ -99,8 +99,8 @@ Material:
     - _ColorGlobal: {r: 0.5, g: 0.5, b: 0.5, a: 0}
     - _ColorGlobal1: {r: 0.86764705, g: 0.86764705, b: 0.86764705, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InteractPos: {r: 0, g: 78.47, b: -10, a: 0}
-    - _InteractSpeed: {r: -7e-45, g: 1e-45, b: 7e-45, a: 0}
-    - _OceanCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _InteractPos: {r: 279.15524, g: 13.08332, b: 224.94832, a: 0}
+    - _InteractSpeed: {r: 0.2622546, g: -0.011395374, b: -0.0039104563, a: 0}
+    - _OceanCenter: {r: 0, g: 0, b: 0.2, a: 0.2}
     - _TimeControl1: {r: 2, g: 1, b: 1, a: 0}
     - _WaveControl1: {r: 1, g: 0.01, b: 0.001, a: 0}
