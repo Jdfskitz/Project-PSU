@@ -10,7 +10,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 0bf2fbdc14366694cb6734bd9b081ffe, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
   stringTagMap: {}
@@ -42,11 +42,11 @@ Material:
     - _AO: 2.4
     - _BaseColorYShift: 1
     - _BaseLight: 0.35
-    - _BulgeScale: 0.6
+    - _BulgeScale: 0.17
     - _BulgeScale_copy: 1
     - _BulgeShape: 8.61
-    - _Cutoff: 0.502
-    - _FadeThreshold: 470
+    - _Cutoff: 0.673
+    - _FadeThreshold: 500
     - _GlowIntensity: 0.76
     - _Occlusion: 7.5
     - _RandYScale: 1
@@ -54,9 +54,9 @@ Material:
     - _ShadowStrength: 1
     - _Shininess: 0.7
     - _SmoothMotionFactor: 255
-    - _SpecularPower: 0
+    - _SpecularPower: 1
     - _SquashAmount: 1
-    - _StopMotionThreshold: 20
+    - _StopMotionThreshold: 15
     - _Strength: 0.16
     - _TintFrequency: 0.1
     - _TintPower: 0
@@ -65,21 +65,21 @@ Material:
     - _WaveYFactor: 0.4
     m_Colors:
     - _CameraPos: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.8367347, b: 0.1734694, a: 1}
-    - _ColorGlobal: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.9665523, g: 0.9705882, b: 0.6779844, a: 1}
+    - _ColorGlobal: {r: 0.43382353, g: 0.86764705, b: 0.45476678, a: 0}
     - _ColorGlobal1: {r: 1, g: 1, b: 1, a: 1}
     - _ColorTrans: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _GlowColor: {r: 0.75735295, g: 0.41001523, b: 0.41001523, a: 0.9764706}
-    - _InteractPos: {r: 279.15524, g: 13.08332, b: 224.94832, a: 0}
-    - _InteractSpeed: {r: 0.2622546, g: -0.011395374, b: -0.0039104563, a: 0}
-    - _OceanCenter: {r: 0, g: 0, b: 0.2, a: 0.2}
+    - _InteractPos: {r: 224.1, g: 74.6, b: 85.9, a: 0}
+    - _InteractSpeed: {r: 0, g: -0, b: -0, a: 0}
+    - _OceanCenter: {r: 0, g: 0, b: 0, a: 0}
     - _Params1: {r: 11.86, g: 24.5, b: 19.6, a: 0}
     - _Params2: {r: 9.72, g: 18.71, b: 9.89, a: 0}
     - _Scale: {r: 1, g: 2.45, b: 0.5, a: 0}
     - _SpecColor: {r: 0.07352942, g: 0, b: 0.019463655, a: 0}
-    - _TimeControl1: {r: 2, g: 1, b: 1, a: 0}
+    - _TimeControl1: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.41, a: 1}
     - _WaveAndDistance: {r: 12, g: 3.6, b: 1, a: 1}
     - _WaveControl1: {r: 1.01, g: 0, b: 0, a: 0.3}

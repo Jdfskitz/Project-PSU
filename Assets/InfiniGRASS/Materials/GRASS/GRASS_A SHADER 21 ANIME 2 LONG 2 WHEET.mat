@@ -42,7 +42,7 @@ Material:
     - _AO: 2.4
     - _BaseColorYShift: 1
     - _BaseLight: 0.35
-    - _BulgeScale: 0.6
+    - _BulgeScale: 0.17
     - _BulgeScale_copy: 0
     - _BulgeShape: 0
     - _Cutoff: 0.51
@@ -72,9 +72,9 @@ Material:
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _GlowColor: {r: 0.75735295, g: 0.41001523, b: 0.41001523, a: 0.9764706}
-    - _InteractPos: {r: 279.15524, g: 13.08332, b: 224.94832, a: 0}
-    - _InteractSpeed: {r: 0.2622546, g: -0.011395374, b: -0.0039104563, a: 0}
-    - _OceanCenter: {r: 0, g: 0, b: 0.2, a: 0.2}
+    - _InteractPos: {r: 224.1, g: 74.6, b: 85.9, a: 0}
+    - _InteractSpeed: {r: 0, g: -0, b: -0, a: 0}
+    - _OceanCenter: {r: 0, g: 0, b: 0, a: 0}
     - _Params1: {r: 11.86, g: 24.5, b: 19.6, a: 0}
     - _Params2: {r: 9.72, g: 18.71, b: 9.89, a: 0}
     - _Scale: {r: 1, g: 2.45, b: 0.5, a: 0}

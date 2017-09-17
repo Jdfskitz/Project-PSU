@@ -83,7 +83,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BulgeScale: 0.6
+    - _BulgeScale: 0.17
     - _BulgeScale_copy: 0
     - _BulgeShape: 0
     - _BumpScale: 1
@@ -121,8 +121,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _HeightControlPoints: {r: 1, g: 1, b: 1, a: 1}
-    - _InteractPos: {r: 279.15524, g: 13.08332, b: 224.94832, a: 0}
-    - _OceanCenter: {r: 0, g: 0, b: 0.2, a: 0.2}
+    - _InteractPos: {r: 224.1, g: 74.6, b: 85.9, a: 0}
+    - _OceanCenter: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _Power: {r: 0.5, g: 0.5, b: 1, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
