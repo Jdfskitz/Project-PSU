@@ -15,155 +15,112 @@ public class SkeletonHandler : MonoBehaviour {
 	public float tempSpeed = .2f;
 	public float attackWait = 3;
 
-
 	public bool moving = false;
 	public bool attacking = false;
 	private bool isWalking;
 	private bool isAttacking;
-	private bool attackDisabled = false;
-	private int hit;
+
+	public int AnimationState = 1;
 
 	public int FactionID;
 	
-	void Update () {
+	void Start()
+	{
 		anim = this.gameObject.GetComponent<Animator> ();
+	}
 
-		GetInactiveInRadius ();
-
+	void Update () {
+		
+		MoveTowardsDetection();
 		idlePhase ();
 		walkingPhase ();
 		attackPhase ();
 
 	}
 
-	void GetInactiveInRadius(){
+	//DETECTION FOR WALKING TOWARDS
+
+	void MoveTowardsDetection(){
 		
 		foreach (GameObject go in array){
 			
 			float distanceSqr = (transform.position - go.transform.position).sqrMagnitude;
 
-			if (distanceSqr < detectRadius && !attackDisabled) {
+			if (distanceSqr < detectRadius) {
 				moving = true;
 			} else {
 				moving = false;
 			}
 
-			if (distanceSqr < attackRadius && !attackDisabled) {
+			if (distanceSqr < attackRadius) {
 				attacking = true;
 			} else {
 				attacking = false;
 			}
-
-
-			if (moving && !attackDisabled) {
+				
+			if (moving) {
 				_lookRotation = Quaternion.LookRotation (go.transform.position - transform.position);
 				transform.position = Vector3.MoveTowards (transform.position, go.transform.position, speed * Time.deltaTime);
 				transform.rotation = Quaternion.Slerp (transform.rotation, _lookRotation, turnSpeed * Time.deltaTime);
 				transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 				isWalking = true;
-
 			} else {
 				isWalking = false;
 			}
 
-
-			if (attacking || attackDisabled) {
+			if (attacking) {
 				moving = false;
 				speed = 0;
-
-
 			} else {
-				
 				moving = true;
 				speed = tempSpeed;
 			}
-
-
-
 		}
 	}
 
-	/*
-	void attackPhase()
-	{
-		if (attacking && !moving && !attackDisabled) {
-			StartCoroutine (AttackPause (attackWait));
-		}
-		if (hit) {
-			Debug.Log ("hit");
-			hit = false;
-		}
-	}*/ 
-
-	void attackPhase()
-	{
-		if (attacking && !moving && !attackDisabled) {
-
-			StartCoroutine (AttackPause (attackWait));
-
-		}
-
-	}
-
-
+	//While not walking or attacking
 	void idlePhase()
 	{
 		if (!isWalking && !attacking) {
 			anim.Play ("Idle");
 		}
-		if (attackDisabled) {
-			anim.Play ("attackReady");
-		}
 	}
 
+	//While walking and not attacking
 	void walkingPhase()
 	{
-		if (isWalking && !attacking && !attackDisabled) {
+		if (isWalking && !attacking) {
 			anim.Play ("Walk");
 		}
 	}
+
+	//Atack Coroutine Initialization
+	void attackPhase()
+	{
+		if (attacking && !moving) {
+			if (AnimationState == 1) {
+				StartCoroutine (AttackInitial ());
+			} else if (AnimationState == 2) {
+				StartCoroutine (AttackMid (attackWait));
+			}else{
+			}
+		}
+	}
+
+	//Couroutine Handlers
+	public IEnumerator AttackInitial()
+	{
+		anim.Play ("Attack");
+		Debug.Log ("IN ANIMATION ATTACK");
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);	
+		AnimationState = 2;
+	}
 		
-	/*
-	public IEnumerator AttackPause(float attackWait)
-	{
-		hit = true;
-		anim.Play ("Attack");
-		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-		attackDisabled = true;
-		yield return new WaitForSeconds(attackWait);
-		attackDisabled = false;
-		attackPhase ();
-	}*/
-
-	public IEnumerator AttackPause(float attackWait)
-	{
-		beginAttack ();
-		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-		midAttack (0);
-		yield return new WaitForSeconds (attackWait);
-		finishAttack ();
-	}
-
-	void beginAttack ()
-	{
-		anim.Play ("Attack");
-	}
-
-	void midAttack(int hit)
+	public IEnumerator AttackMid(float attackWait)
 	{
 		anim.Play ("attackReady");
-		attackDisabled = true;
-		hit++;
-		if (hit == 1) {
-			Debug.Log ("hit");
-			hit++;
-		}
-
+		Debug.Log("IN ANIMATION MIDATTACK");
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime+attackWait);
+		AnimationState = 1;
 	}
-	void finishAttack()
-	{
-		
-		attackDisabled = false;
-	}
-
 }
