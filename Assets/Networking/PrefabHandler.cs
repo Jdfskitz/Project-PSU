@@ -26,16 +26,18 @@ private int goRotateZ;
 
 
 
-public void Start()
+public void Start ()
 {
 
-connectionString = "Data Source=" + SQL_HOST + "," + SQL_PORT + ";" + "Initial Catalog=" + SQL_DATABASE_NAME + ";" + "User ID=" + SQL_USERNAME + ";" + "Password=" + SQL_PASSWORD + ";";
+connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
 
 cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
 
     try {
         Debug.Log("Connecting to MySQL");
         cnn.Open();
+        Debug.Log("Success");
+
         MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
 
         //*CREATE TABLE GameObjects (Name VARCHAR(100) NOT NULL, GameObjectID INTEGER, TransformX INTEGER, TransformY INTEGER, TransformZ INTEGER, RotateX INTEGER, RotateY INTEGER, RotateZ INTEGER); */
@@ -63,18 +65,25 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
             }
 
             //Skeleton Spawner
+
             if(goID == 1)
             {
+            Debug.Log("goID equals 1, instantiating Skeleton");
             GameObject go = (GameObject)Instantiate(Resources.Load("Skeleton"),new Vector3(goTransformX,goTransformY,goTransformZ)
             									,Quaternion.Euler(goRotateX,goRotateY,goRotateZ));
             }
-       
+        
+
         goInfo.Close();
         cnn.Close();
+
+
     }
-    catch
+    catch(MySql.Data.MySqlClient.MySqlException sqlEx)
     {
         Debug.Log("Failed Connection");
+        cnn.Close();
+
     }
 
 

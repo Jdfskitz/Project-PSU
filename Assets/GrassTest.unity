@@ -35161,16 +35161,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738662175}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32be791bb66814ffeaf2e0f4199d154f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SQL_DATABASE_NAME: 
-  SQL_USERNAME: 
-  SQL_PASSWORD: 
-  SQL_PORT: 
-  SQL_HOST: 
+  SQL_DATABASE_NAME: Prefabs
+  SQL_USERNAME: unityroot
+  SQL_PASSWORD: '!Q@W#E1q2w3e'
+  SQL_PORT: 3306
+  SQL_HOST: localhost
 --- !u!1 &740043243
 GameObject:
   m_ObjectHideFlags: 0
