@@ -22539,13 +22539,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   array: []
   detectRadius: 300
-  meleeAttackRadius: 8
-  speed: 2
+  meleeAttackRadius: 15
+  speed: 4
   turnSpeed: 3
-  tempSpeed: 2
   attackWait: 0.75
-  moving: 0
-  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
   PrefabID: 0
@@ -25529,13 +25526,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   array: []
   detectRadius: 300
-  meleeAttackRadius: 8
-  speed: 2
+  meleeAttackRadius: 15
+  speed: 4
   turnSpeed: 3
-  tempSpeed: 2
   attackWait: 0.75
-  moving: 0
-  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
   PrefabID: 0
@@ -33105,6 +33099,10 @@ Prefab:
     - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
       propertyPath: m_Name
       value: Skeleton@Skin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
@@ -58319,6 +58317,10 @@ Prefab:
       propertyPath: m_Name
       value: Skeleton@Skin (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
   m_IsPrefabParent: 0
@@ -63079,6 +63081,10 @@ Prefab:
     - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
       propertyPath: m_Name
       value: Skeleton@Skin (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
@@ -71101,6 +71107,10 @@ Prefab:
       propertyPath: m_Name
       value: Skeleton@Skin (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
   m_IsPrefabParent: 0
@@ -75599,13 +75609,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   array: []
   detectRadius: 300
-  meleeAttackRadius: 8
-  speed: 2
+  meleeAttackRadius: 15
+  speed: 4
   turnSpeed: 3
-  tempSpeed: 2
   attackWait: 0.75
-  moving: 0
-  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
   PrefabID: 0
@@ -84450,13 +84457,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   array: []
   detectRadius: 300
-  meleeAttackRadius: 8
-  speed: 2
+  meleeAttackRadius: 15
+  speed: 4
   turnSpeed: 3
-  tempSpeed: 2
   attackWait: 0.75
-  moving: 0
-  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
   PrefabID: 0
@@ -98851,13 +98855,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   array: []
   detectRadius: 300
-  meleeAttackRadius: 8
-  speed: 2
+  meleeAttackRadius: 15
+  speed: 4
   turnSpeed: 3
-  tempSpeed: 2
   attackWait: 0.75
-  moving: 0
-  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
   PrefabID: 0

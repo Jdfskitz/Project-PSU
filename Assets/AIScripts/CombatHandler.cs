@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeDetection : MonoBehaviour {
+public class CombatHandler : MonoBehaviour {
 
 	public GameObject [] array;
 	private Quaternion _lookRotation;
@@ -11,16 +11,16 @@ public class RangeDetection : MonoBehaviour {
 	public float detectRadius = 300f;
 	public float meleeAttackRadius = 50f;
 	public float speed = .2f;
+	private float tempSpeed;
 	public float turnSpeed = 100f;
-	public float tempSpeed = .2f;
 	public float attackWait = 3;
 
 	private bool t = false;
 	private bool satk;
 	private bool matk;
 	private bool fatk;
-	public bool moving = false;
-	public bool meleeAttacking = false;
+	private bool moving = false;
+	private bool meleeAttacking = false;
 	private bool isWalking;
 	private bool isIdle;
 	private int i;
@@ -34,6 +34,8 @@ public class RangeDetection : MonoBehaviour {
 
 	void Start()
 	{
+
+		tempSpeed = speed;
 		anim = this.gameObject.GetComponent<Animator> ();
 	}
 
@@ -114,16 +116,16 @@ public class RangeDetection : MonoBehaviour {
 	//While not walking or attacking
 	void idlePhase()
 	{
-		if (isIdle && !isWalking && !meleeAttacking) {
-			anim.Play ("Idle");
+		if (!isWalking && !meleeAttacking) {
+			this.anim.Play ("Idle");
 		}
 	}
 
 	//While walking and not attacking
 	void walkingPhase()
 	{
-		if (isWalking && !isIdle && !meleeAttacking) {
-			anim.Play ("Walk");
+		if (isWalking && !meleeAttacking) {
+			this.anim.Play ("Walk");
 		}
 	}
 
@@ -131,13 +133,15 @@ public class RangeDetection : MonoBehaviour {
 	
 	void attackPhase()
 	{
-		
-		if(!t)
+	if(meleeAttacking)
 		{
-			anim = this.gameObject.GetComponent<Animator> ();
-			StartCoroutine(AttackInitial ());
-			t = true;
-			
+			if(!t)
+			{
+				this.anim = this.gameObject.GetComponent<Animator> ();
+				this.StartCoroutine(AttackInitial ());
+				t = true;
+				
+			}
 		}
 	}
 
@@ -145,11 +149,11 @@ public class RangeDetection : MonoBehaviour {
 	public IEnumerator AttackInitial()
 	{
 			attackStart();
-			anim.Play ("Attack");
+			this.anim.Play ("Attack");
 			//Debug.Log ("IN ANIMATION ATTACK");
 			yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);	
-			anim.Play ("attackReady");
 			attackMid();
+			this.anim.Play ("attackReady");
 			//Debug.Log("IN ANIMATION MIDATTACK");
 			yield return new WaitForSeconds(attackWait);
 			attackFinish();	
@@ -187,11 +191,8 @@ public class RangeDetection : MonoBehaviour {
 
 
 
+
 			//*End Mid Attack Input */
-			
-
-
-
 			matk = true;
 		}
 	}
