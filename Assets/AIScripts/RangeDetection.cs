@@ -29,6 +29,7 @@ public class RangeDetection : MonoBehaviour {
 	public int AnimationState = 1;
 
 	public int FactionID;
+	public int PrefabID;
 
 
 	void Start()
@@ -37,7 +38,8 @@ public class RangeDetection : MonoBehaviour {
 	}
 
 	void Update () {
-		
+		array = GameObject.FindGameObjectsWithTag("Player");
+
 		MoveTowardsDetection();
 		idlePhase ();
 		walkingPhase ();
@@ -56,8 +58,7 @@ public class RangeDetection : MonoBehaviour {
 		
 		foreach (GameObject go in array){
 			
-			if(go.tag == "Player")
-			{
+
 			float distanceSqr = (transform.position - go.transform.position).sqrMagnitude;
 
 			if (distanceSqr < detectRadius) {
@@ -98,7 +99,7 @@ public class RangeDetection : MonoBehaviour {
 				isIdle = false;
 			}
 		}
-		}
+		
 	}
 
 	void OnEnable(){
@@ -137,10 +138,7 @@ public class RangeDetection : MonoBehaviour {
 			StartCoroutine(AttackInitial ());
 			t = true;
 			
-		}else{
-			t = true;
 		}
-	
 	}
 
 	//Couroutine Handlers
@@ -150,10 +148,10 @@ public class RangeDetection : MonoBehaviour {
 			anim.Play ("Attack");
 			//Debug.Log ("IN ANIMATION ATTACK");
 			yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);	
-			attackMid();
 			anim.Play ("attackReady");
+			attackMid();
 			//Debug.Log("IN ANIMATION MIDATTACK");
-			yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime+attackWait);
+			yield return new WaitForSeconds(attackWait);
 			attackFinish();	
 			t = false;
 	}

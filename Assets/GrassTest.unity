@@ -20411,6 +20411,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5171916
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -22484,6 +22488,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fe11d7fae4d314f35b7c512c2f6ddb7b, type: 2}
+    - target: {fileID: 100078, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
+      propertyPath: m_TagString
+      value: Spawnable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
   m_IsPrefabParent: 0
@@ -22529,18 +22537,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e0daccccff4c65be4d842ed061ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  array:
-  - {fileID: 1027429953}
+  array: []
   detectRadius: 300
-  attackRadius: 15
+  meleeAttackRadius: 8
   speed: 2
   turnSpeed: 3
   tempSpeed: 2
-  attackWait: 0
+  attackWait: 0.75
   moving: 0
-  attacking: 0
+  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
+  PrefabID: 0
 --- !u!1 &481474012
 GameObject:
   m_ObjectHideFlags: 0
@@ -25519,18 +25527,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e0daccccff4c65be4d842ed061ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  array:
-  - {fileID: 1027429953}
+  array: []
   detectRadius: 300
-  attackRadius: 15
+  meleeAttackRadius: 8
   speed: 2
   turnSpeed: 3
   tempSpeed: 2
-  attackWait: 0
+  attackWait: 0.75
   moving: 0
-  attacking: 0
+  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
+  PrefabID: 0
 --- !u!1 &576347810
 GameObject:
   m_ObjectHideFlags: 0
@@ -33538,6 +33546,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.2731284
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -34185,6 +34197,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6910958
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -37554,6 +37570,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6910958
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -46448,6 +46468,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.6910958
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -49649,7 +49673,7 @@ GameObject:
   - component: {fileID: 1027429954}
   m_Layer: 8
   m_Name: Character
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52307,6 +52331,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -19.460001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -57178,6 +57206,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.8131629
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -62449,6 +62481,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5997945
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -63652,6 +63688,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.3832535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -72794,6 +72834,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9085776
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -75553,18 +75597,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e0daccccff4c65be4d842ed061ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  array:
-  - {fileID: 1027429953}
+  array: []
   detectRadius: 300
-  attackRadius: 15
+  meleeAttackRadius: 8
   speed: 2
   turnSpeed: 3
   tempSpeed: 2
-  attackWait: 0
+  attackWait: 0.75
   moving: 0
-  attacking: 0
+  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
+  PrefabID: 0
 --- !u!1 &1601005645
 GameObject:
   m_ObjectHideFlags: 0
@@ -78090,6 +78134,10 @@ Prefab:
     - target: {fileID: 400096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0.716
+      objectReference: {fileID: 0}
+    - target: {fileID: 100096, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 412b92d4feeb9c548bfa98f62c4d1022, type: 2}
@@ -81687,6 +81735,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.6910958
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -84396,18 +84448,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e0daccccff4c65be4d842ed061ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  array:
-  - {fileID: 1027429953}
+  array: []
   detectRadius: 300
-  attackRadius: 15
+  meleeAttackRadius: 8
   speed: 2
   turnSpeed: 3
   tempSpeed: 2
-  attackWait: 0
+  attackWait: 0.75
   moving: 0
-  attacking: 0
+  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
+  PrefabID: 0
 --- !u!1 &1826013207
 GameObject:
   m_ObjectHideFlags: 0
@@ -85505,6 +85557,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6910958
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -87738,9 +87794,9 @@ MonoBehaviour:
   prev_cam_pos: {x: 0, y: 0, z: 0}
   AdaptOnTerrain: 0
   AdaptOnColor: 0
-  currentTerrain: {fileID: 746405356}
-  Tdata: {fileID: 15600000, guid: be299c70267f6448bb3a5e55268d76d0, type: 2}
-  Tpos: {x: 0, y: 0, z: 0}
+  currentTerrain: {fileID: 427376762}
+  Tdata: {fileID: 15600000, guid: 5ae8f5a51382a412f95ad4663d9a5c88, type: 2}
+  Tpos: {x: 0, y: -8.899998, z: -497.62842}
   ScalePerTexture: []
   RandomRot: 0
   RandRotMin: -360
@@ -94285,6 +94341,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.7325615
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -95057,6 +95117,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.6910958
       objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
   m_IsPrefabParent: 0
@@ -95110,6 +95174,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.6910958
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
@@ -98781,18 +98849,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e0daccccff4c65be4d842ed061ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  array:
-  - {fileID: 1027429953}
+  array: []
   detectRadius: 300
-  attackRadius: 15
+  meleeAttackRadius: 8
   speed: 2
   turnSpeed: 3
   tempSpeed: 2
-  attackWait: 3
+  attackWait: 0.75
   moving: 0
-  attacking: 0
+  meleeAttacking: 0
   AnimationState: 1
   FactionID: 9
+  PrefabID: 0
 --- !u!1 &2081556541
 GameObject:
   m_ObjectHideFlags: 0
@@ -98883,6 +98951,10 @@ Prefab:
     - target: {fileID: 400002, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -18.487001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee6765da7db992e42a63c23f4e2c42e0, type: 2}
