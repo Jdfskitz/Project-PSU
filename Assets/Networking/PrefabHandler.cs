@@ -29,7 +29,8 @@ private int goRotateZ;
 public void Start()
 {
 
-connectionString = "Data Source=SQL_HOST,SQL_PORT;Initial Catalog=SQL_DATABASE_NAME;User ID=SQL_USERNAME;Password=SQL_PASSWORD";
+connectionString = "Data Source=" + SQL_HOST + "," + SQL_PORT + ";" + "Initial Catalog=" + SQL_DATABASE_NAME + ";" + "User ID=" + SQL_USERNAME + ";" + "Password=" + SQL_PASSWORD + ";";
+
 cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
 
     try {
@@ -37,8 +38,9 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
         cnn.Open();
         MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
 
-        //*CREATE TABLE GameObjects (Name VARCHAR(100) NOT NULL, GameObjectID INTEGER, TransformY INTEGER, TransformY INTEGER, TransformZ INTEGER, RotateX INTEGER, RotateY INTEGER, RotateZ INTEGER); */
-
+        //*CREATE TABLE GameObjects (Name VARCHAR(100) NOT NULL, GameObjectID INTEGER, TransformX INTEGER, TransformY INTEGER, TransformZ INTEGER, RotateX INTEGER, RotateY INTEGER, RotateZ INTEGER); */
+        //*INSERT INTO GameObjects (Name, GameObjectID, TransformX, TransformY, TransformZ, RotateX, RotateY, RotateZ) VALUES ( "" , , , , , , , ); */
+        //*EX: INSERT INTO GameObjects (Name, GameObjectID, TransformX, TransformY, TransformZ, RotateX, RotateY, RotateZ) VALUES ( "Skeleton" , 1, 295, 10, 120, 0, 80, 0); */
 
 
         string sql = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ FROM GameObjects";
@@ -75,11 +77,6 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
         Debug.Log("Failed Connection");
     }
 
-
-}
-
-public void Update()
-{
 
 }
 
