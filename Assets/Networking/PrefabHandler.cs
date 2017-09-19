@@ -62,16 +62,19 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
                 goRotateX = (int)goInfo[5];
                 goRotateY = (int)goInfo[6];
                 goRotateZ = (int)goInfo[7];
-            }
-
-            //Skeleton Spawner
-
-            if(goID == 1)
+            
+             if(goID == 1)
             {
             Debug.Log("goID equals 1, instantiating Skeleton");
             GameObject go = (GameObject)Instantiate(Resources.Load("Skeleton"),new Vector3(goTransformX,goTransformY,goTransformZ)
             									,Quaternion.Euler(goRotateX,goRotateY,goRotateZ));
             }
+            
+            }
+
+            //Skeleton Spawner
+
+
         
 
         goInfo.Close();
