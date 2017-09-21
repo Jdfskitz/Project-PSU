@@ -23,6 +23,8 @@ public int goTransformZ;
 public int goRotateX;
 public int goRotateY;
 public int goRotateZ;
+
+public int updateWaitTimer;
 private int goIndex;
 
 private int isOpen;
@@ -32,15 +34,16 @@ private int [] countid;
 private string GameObjectsTable = "GameObjects";
 private int key;
 int i = 0;
+bool t;
 int count = 0;
 private GameObject go;
 
+
+
 public void Start ()
 {
+    SQLInitializer();
 
-connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
-
-cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
 
     try {
         Debug.Log("Connecting to MySQL");
@@ -77,12 +80,13 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
                     {
                     go = (GameObject)Instantiate(Resources.Load("Skeleton"),new Vector3(goTransformX,goTransformY,goTransformZ)
                                                         ,Quaternion.Euler(goRotateX,goRotateY,goRotateZ));
+
+                    go.transform.position = new Vector3(goTransformX,goTransformY,goTransformZ);
+                    
                     go.GetComponent<CombatHandler>().pID = goIndex;
                     isOpen = 0;
-                }else{      
 
-                    
-                }
+                    }
 
         } 
 
@@ -90,14 +94,13 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
 
         //Skeleton Spawner
         goInfo.Close();
-        cnn.Close();
 
 
     }
     catch(MySql.Data.MySqlClient.MySqlException sqlEx)
     {
         Debug.Log("Failed Connection");
-        cnn.Close();
+        SQLTermination();
         
     }
 
@@ -106,89 +109,79 @@ cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
 
 
 public void Update()
-{
-    try{
-    Debug.Log("Success Update");
-
-    cnn.Open();
-    
-    string sql = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects";
-
-    MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, cnn);
-
-    MySql.Data.MySqlClient.MySqlDataReader goInfo = cmd.ExecuteReader(); 
-
-            while(goInfo.Read())
-            {
-                goName = (string)goInfo[0];
-                goID = (int)goInfo[1];
-                goTransformX = (int)goInfo[2];
-                goTransformY = (int)goInfo[3];
-                goTransformZ = (int)goInfo[4];
-                goRotateX = (int)goInfo[5];
-                goRotateY = (int)goInfo[6];
-                goRotateZ = (int)goInfo[7];
-                goIndex = (int)goInfo[8];
-                isOpen = (int)goInfo[9];
-            }
-
-                MySql.Data.MySqlClient.MySqlCommand Update = new MySql.Data.MySqlClient.MySqlCommand("UPDATE `Prefabs`.`GameObjects` SET `TransformX`= '" + go.GetComponent<CombatHandler>().TransformX + "';" ,cnn);
-
-    }
-
-    catch(MySql.Data.MySqlClient.MySqlException)
-    {
-        Debug.Log("Failure Update");
-    }
-}
-
-//void Update()
-//{
-//    go.transform.position = GetComponent<CombatHandler>().thisPosition;
-//    string MovementQuery = "UPDATE GameObjects(TransformX,TransformY,TransformZ) VALUES (" + go.transform.position.x + "," + go.transform.position.y + "," + go.transform.position.z + ")";
-//    new MySql.Data.MySqlClient.MySqlCommand(MovementQuery,cnn);
-//}
-
-
-/*void Update()
-{
-connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
-
-cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
-
-    try {
-        Debug.Log("Connecting to MySQL");
-        cnn.Open();
-        Debug.Log("Success");
-
-        MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
-
-        string sql = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ FROM GameObjects";
+{       
+        
+        try{
+        string sql = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects";
 
         MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, cnn);
 
         MySql.Data.MySqlClient.MySqlDataReader goInfo = cmd.ExecuteReader();
 
+        while(goInfo.Read())
+        {
+                    goName = (string)goInfo[0];
+                    goID = (int)goInfo[1];
+                    goTransformX = (int)goInfo[2];
+                    goTransformY = (int)goInfo[3];
+                    goTransformZ = (int)goInfo[4];
+                    goRotateX = (int)goInfo[5];
+                    goRotateY = (int)goInfo[6];
+                    goRotateZ = (int)goInfo[7];
+                    goIndex = (int)goInfo[8];
+                    isOpen = (int)goInfo[9];
+        }
+        
+        //MySql.Data.MySqlClient.MySqlCommand Update = new MySql.Data.MySqlClient.MySqlCommand("UPDATE `Prefabs`.`GameObjects` SET `TransformX`= '" + go.GetComponent<CombatHandler>().TransformX + "' `TransformY`= '" + go.GetComponent<CombatHandler>().TransformY + "' `TransformZ`= '" + go.GetComponent<CombatHandler>().TransformZ + "';" ,cnn);
+        cmd.CommandText = "UPDATE `Prefabs`.`GameObjects` SET `TransformX`= '" + go.GetComponent<CombatHandler>().TransformX + "' `TransformY`= '" + go.GetComponent<CombatHandler>().TransformY + "' `TransformZ`= '" + go.GetComponent<CombatHandler>().TransformZ + "';" ;
+        
+        cmd.ExecuteReader();
+
+        Debug.Log("Prefab position update");
+        }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
+
+        }
+
+        /*if(!t)
+        {
+            StartCoroutine(UpdatePosition());
+            t = true;
+        }*/
 
 
 
-
-        goInfo.Close();
-        cnn.Close();
-
-
-    }
-    catch(MySql.Data.MySqlClient.MySqlException sqlEx)
-    {
-        Debug.Log("Failed Connection");
-        cnn.Close();
-
-    }
-
-
-
-}*/
 
 }
+
+
+
+	/*public IEnumerator UpdatePosition()
+	{
+        SQLInitializer();
+
+        yield return new WaitForSeconds(updateWaitTimer);
+        MySql.Data.MySqlClient.MySqlCommand Update = new MySql.Data.MySqlClient.MySqlCommand("UPDATE `Prefabs`.`GameObjects` SET `TransformX`= '" + go.GetComponent<CombatHandler>().TransformX + "' `TransformY`= '" + go.GetComponent<CombatHandler>().TransformY + "' `TransformZ`= '" + go.GetComponent<CombatHandler>().TransformZ + "';" ,cnn);
+        Debug.Log("Prefab Position Update");
+        t = false;
+        
+
+    }*/
+
+
+    public void SQLInitializer()
+    {
+        connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
+
+        cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString);
+    }
+
+
+    public void SQLTermination()
+    {
+        cnn.Close();
+    }
+
+}
+
 
 

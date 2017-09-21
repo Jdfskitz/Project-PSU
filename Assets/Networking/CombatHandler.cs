@@ -55,6 +55,8 @@ public class CombatHandler : MonoBehaviour {
 		{
 			AIEnemyEventHandler.startAttack();
 		}
+
+		
 	}
 
 
@@ -63,58 +65,6 @@ public class CombatHandler : MonoBehaviour {
 
 	void MoveTowardsDetection(){
 
-		/*TransformX = GetComponent<PrefabHandler>().goTransformX;
-		TransformY = GetComponent<PrefabHandler>().goTransformY;
-		TransformZ = GetComponent<PrefabHandler>().goTransformZ;*/
-		//thisPosition = new Vector3(TransformX,TransformY,TransformZ);
-
-			//* Detect game object based on server */
-			//* Determine a single target */
-
-/* 
-		foreach (GameObject go in array){
-
- 
-			float distanceSqr = (transform.position - go.transform.position).sqrMagnitude;
-
-			if (distanceSqr < detectRadius) {
-				moving = true;
-			} else {
-				moving = false;
-			}
-
-			if (distanceSqr < meleeAttackRadius) {
-				meleeAttacking = true;
-				
-			} else {
-				meleeAttacking = false;
-			}
-				
-			if (moving) {
-				_lookRotation = Quaternion.LookRotation (go.transform.position - transform.position);
-				transform.position = Vector3.MoveTowards (transform.position, go.transform.position, speed * Time.deltaTime);
-				transform.rotation = Quaternion.Slerp (transform.rotation, _lookRotation, turnSpeed * Time.deltaTime);
-				transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-				isWalking = true;
-			} else {
-				isWalking = false;
-			}
-
-			if (meleeAttacking) {
-				moving = false;
-				speed = 0;
-			} else {
-				moving = true;
-				speed = tempSpeed;
-			}
-
-			if(!meleeAttacking && speed == 0)
-			{
-				isIdle = true;
-			}else{
-				isIdle = false;
-			}
-	} /*  */
 		foreach (GameObject go in array){
 
  
