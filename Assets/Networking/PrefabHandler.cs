@@ -16,9 +16,14 @@ private string connectionString = null;
 MySql.Data.MySqlClient.MySqlConnection cnn;
 private string goName;
 private int goID;
-private float goTransformX, goTransformY, goTransformZ, goRotateX, goRotateY, goRotateZ;
+public int goTransformX;
+public int goTransformY;
+public int goTransformZ;
+public int goRotateX;
+public int goRotateY;
+public int goRotateZ;
 
-public int ServerRefreshRate;
+private int ping;
 
 public int updateWaitTimer;
 private int goIndex;
@@ -29,14 +34,19 @@ bool t;
 bool k = false;
 int count = 0;
 private GameObject go;
+<<<<<<< HEAD
     private List<GameObject> goList = new List<GameObject>();
     private List<int> allIds = new List<int>();
 //List<int> allIds = new List<int>();
+=======
+
+>>>>>>> parent of d0e19e2... somenetworkchanges
 
 
 
-    public void Start ()
+public void Start ()
 {
+    ping = 5;
         //sqlQueue = @"GameObjects";
         connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
         MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
@@ -62,23 +72,27 @@ private GameObject go;
                     {
                         goName = (string)GameObjectsDB[0];
                         goID = (int)GameObjectsDB[1];
-                        goTransformX = (float)GameObjectsDB[2];
-                        goTransformY = (float)GameObjectsDB[3];
-                        goTransformZ = (float)GameObjectsDB[4];
-                        goRotateX = (float)GameObjectsDB[5];
-                        goRotateY = (float)GameObjectsDB[6];
-                        goRotateZ = (float)GameObjectsDB[7];
+                        goTransformX = (int)GameObjectsDB[2];
+                        goTransformY = (int)GameObjectsDB[3];
+                        goTransformZ = (int)GameObjectsDB[4];
+                        goRotateX = (int)GameObjectsDB[5];
+                        goRotateY = (int)GameObjectsDB[6];
+                        goRotateZ = (int)GameObjectsDB[7];
                         goIndex = (int)GameObjectsDB[8];
+<<<<<<< HEAD
                         isOpen = (int)GameObjectsDB[9];
 
                         allIds.Add((int)GameObjectsDB[1]);
+=======
+                        isOpen = (int)GameObjectsDB[9];                  
+                            Debug.Log("goInfo Read");
+>>>>>>> parent of d0e19e2... somenetworkchanges
 
                             if(goID == 1 && isOpen == 1)
                             {
                             go = (GameObject)Instantiate(Resources.Load("Skeleton"),new Vector3(goTransformX,goTransformY,goTransformZ),Quaternion.Euler(goRotateX,goRotateY,goRotateZ));
                             go.transform.position = new Vector3(goTransformX,goTransformY,goTransformZ);
                             go.GetComponent<CombatHandler>().pID = goIndex;
-                            goList.Add(go);
                             isOpen = 0;
                             Debug.Log("Object Spawned");
                             //Skeleton Spawner
@@ -107,6 +121,7 @@ private GameObject go;
      
 
         try {
+<<<<<<< HEAD
 
  
 
@@ -166,11 +181,33 @@ private GameObject go;
 
 
 
+=======
+        if(!k)
+        {
+            k=true;
+            cnn.Open();
+            Debug.Log("Update Method");       
+                
+                string updateQuery = "UPDATE GameObjects SET TransformX = @TransformX,TransformY = @TransformY,TransformZ = @TransformZ WHERE id ="+go.GetComponent<CombatHandler>().pID;
 
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(updateQuery,cnn);
+                cmd.Parameters.AddWithValue("@TransformX", go.GetComponent<CombatHandler>().transform.position.x);
+                cmd.Parameters.AddWithValue("@TransformY", go.GetComponent<CombatHandler>().transform.position.y);
+                cmd.Parameters.AddWithValue("@TransformZ", go.GetComponent<CombatHandler>().transform.position.z);
+                
+                cmd.BeginExecuteNonQuery();
+>>>>>>> parent of d0e19e2... somenetworkchanges
+
+                Debug.Log("Data Inserted");
+                
+                StartCoroutine(WaitFunction());
                 cnn.Close();
 
             }
-            catch(MySql.Data.MySqlClient.MySqlException sqlEx){
+                
+        
+                
+            }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
                     Debug.Log("Failed Connection");  
                     cnn.Close();
             }
@@ -184,7 +221,7 @@ private GameObject go;
 
  IEnumerator WaitFunction()
  {
-     yield return new WaitForSeconds(ServerRefreshRate);
+     yield return new WaitForSeconds(ping);
      k = false;
  }
 
@@ -195,11 +232,14 @@ private GameObject go;
 
 }
 
+<<<<<<< HEAD
 public class HolderClass : PrefabHandler
 {
     public int goID { get; set; }
 }
 
+=======
+>>>>>>> parent of d0e19e2... somenetworkchanges
 
 
 public class updateMovement
