@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using MySql.Data.MySqlClient;
 
-
 public class PrefabHandler : MonoBehaviour {
-public updateMovement updatemovement = new updateMovement();
+
 public string SQL_DATABASE_NAME = "";
 public string SQL_USERNAME = "";
 public string SQL_PASSWORD = "";
@@ -16,14 +15,9 @@ private string connectionString = null;
 MySql.Data.MySqlClient.MySqlConnection cnn;
 private string goName;
 private int goID;
-public int goTransformX;
-public int goTransformY;
-public int goTransformZ;
-public int goRotateX;
-public int goRotateY;
-public int goRotateZ;
+private float goTransformX, goTransformY, goTransformZ, goRotateX, goRotateY, goRotateZ;
 
-private int ping;
+public int ServerRefreshRate;
 
 public int updateWaitTimer;
 private int goIndex;
@@ -34,23 +28,14 @@ bool t;
 bool k = false;
 int count = 0;
 private GameObject go;
-<<<<<<< HEAD
-<<<<<<< HEAD
     private List<GameObject> goList = new List<GameObject>();
     private List<int> allIds = new List<int>();
 //List<int> allIds = new List<int>();
-=======
-
->>>>>>> parent of d0e19e2... somenetworkchanges
-=======
-
->>>>>>> parent of d0e19e2... somenetworkchanges
 
 
 
-public void Start ()
+    public void Start ()
 {
-    ping = 5;
         //sqlQueue = @"GameObjects";
         connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
         MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
@@ -76,36 +61,34 @@ public void Start ()
                     {
                         goName = (string)GameObjectsDB[0];
                         goID = (int)GameObjectsDB[1];
-                        goTransformX = (int)GameObjectsDB[2];
-                        goTransformY = (int)GameObjectsDB[3];
-                        goTransformZ = (int)GameObjectsDB[4];
-                        goRotateX = (int)GameObjectsDB[5];
-                        goRotateY = (int)GameObjectsDB[6];
-                        goRotateZ = (int)GameObjectsDB[7];
+                        goTransformX = (float)GameObjectsDB[2];
+                        goTransformY = (float)GameObjectsDB[3];
+                        goTransformZ = (float)GameObjectsDB[4];
+                        goRotateX = (float)GameObjectsDB[5];
+                        goRotateY = (float)GameObjectsDB[6];
+                        goRotateZ = (float)GameObjectsDB[7];
                         goIndex = (int)GameObjectsDB[8];
-<<<<<<< HEAD
-<<<<<<< HEAD
                         isOpen = (int)GameObjectsDB[9];
 
                         allIds.Add((int)GameObjectsDB[1]);
-=======
-=======
->>>>>>> parent of d0e19e2... somenetworkchanges
-                        isOpen = (int)GameObjectsDB[9];                  
+                        Debug.Log(allIds + " Loaded");
+
                             Debug.Log("goInfo Read");
->>>>>>> parent of d0e19e2... somenetworkchanges
 
                             if(goID == 1 && isOpen == 1)
                             {
                             go = (GameObject)Instantiate(Resources.Load("Skeleton"),new Vector3(goTransformX,goTransformY,goTransformZ),Quaternion.Euler(goRotateX,goRotateY,goRotateZ));
                             go.transform.position = new Vector3(goTransformX,goTransformY,goTransformZ);
                             go.GetComponent<CombatHandler>().pID = goIndex;
+                            goList.Add(go);
                             isOpen = 0;
                             Debug.Log("Object Spawned");
                             //Skeleton Spawner
+                            Debug.Log(goID + " loaded");
                             }
 
                 }
+
 
                 GameObjectsDB.Close();     
                 
@@ -116,9 +99,7 @@ public void Start ()
         }
 }
 
-
- //* START REALTIME UPDATE FUNCTION */
-/*public void Update ()
+public void Update ()
 {
         //sqlQueue = @"GameObjects";
         connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
@@ -128,15 +109,6 @@ public void Start ()
      
 
         try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
- 
-
-
- 
-
-
                 if (!k && go != null)
                 {
                     k = true;
@@ -156,21 +128,21 @@ public void Start ()
                         {
                         string updateQuery = "UPDATE GameObjects SET TransformX = @TransformX,TransformY = @TransformY,TransformZ = @TransformZ, RotateX = @RotateX, RotateY = @RotateY, RotateZ = @RotateZ, WHERE id = '" + pID + "' AND isOpen = '1'";
 
-                        MySql.Data.MySqlClient.MySqlCommand updatecmd = new MySql.Data.MySqlClient.MySqlCommand(updateQuery, cnn);
+                        MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(updateQuery, cnn);
 
                         //cmd.Parameters.AddWithValue("@id", go.GetComponent<CombatHandler>().pID);
                         
-                        updatecmd.Parameters.AddWithValue("@TransformX", thisPrefab.GetComponent<CombatHandler>().transform.position.x);
-                        updatecmd.Parameters.AddWithValue("@TransformY", thisPrefab.GetComponent<CombatHandler>().transform.position.y);
-                        updatecmd.Parameters.AddWithValue("@TransformZ", thisPrefab.GetComponent<CombatHandler>().transform.position.z);
+                        cmd.Parameters.AddWithValue("@TransformX", thisPrefab.GetComponent<CombatHandler>().transform.position.x);
+                        cmd.Parameters.AddWithValue("@TransformY", thisPrefab.GetComponent<CombatHandler>().transform.position.y);
+                        cmd.Parameters.AddWithValue("@TransformZ", thisPrefab.GetComponent<CombatHandler>().transform.position.z);
 
-                        updatecmd.Parameters.AddWithValue("@RotateX", thisPrefab.GetComponent<CombatHandler>().transform.rotation.x);
-                        updatecmd.Parameters.AddWithValue("@RotateY", thisPrefab.GetComponent<CombatHandler>().transform.rotation.y);
-                        updatecmd.Parameters.AddWithValue("@RotateZ", thisPrefab.GetComponent<CombatHandler>().transform.rotation.z);
+                        cmd.Parameters.AddWithValue("@RotateX", thisPrefab.GetComponent<CombatHandler>().transform.rotation.x);
+                        cmd.Parameters.AddWithValue("@RotateY", thisPrefab.GetComponent<CombatHandler>().transform.rotation.y);
+                        cmd.Parameters.AddWithValue("@RotateZ", thisPrefab.GetComponent<CombatHandler>().transform.rotation.z);
 
-                        updatecmd.CommandTimeout = 5;
+                        cmd.CommandTimeout = 5;
 
-                        updatecmd.BeginExecuteNonQuery();
+                        cmd.BeginExecuteNonQuery();
                         
                         //goTransformX = go.GetComponent<CombatHandler>().transform.position.x;
                         //goTransformY = go.GetComponent<CombatHandler>().transform.position.y;
@@ -185,173 +157,6 @@ public void Start ()
                 }  
                 //k=false;
                 StartCoroutine(WaitFunction());
-
-
-
-
-=======
-=======
->>>>>>> parent of d0e19e2... somenetworkchanges
-        if(!k)
-        {
-            k=true;
-            cnn.Open();
-            Debug.Log("Update Method");       
-                
-                string updateQuery = "UPDATE GameObjects SET TransformX = @TransformX,TransformY = @TransformY,TransformZ = @TransformZ WHERE id ="+go.GetComponent<CombatHandler>().pID;
-
-                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(updateQuery,cnn);
-                cmd.Parameters.AddWithValue("@TransformX", go.GetComponent<CombatHandler>().transform.position.x);
-                cmd.Parameters.AddWithValue("@TransformY", go.GetComponent<CombatHandler>().transform.position.y);
-                cmd.Parameters.AddWithValue("@TransformZ", go.GetComponent<CombatHandler>().transform.position.z);
-                
-                cmd.BeginExecuteNonQuery();
-<<<<<<< HEAD
->>>>>>> parent of d0e19e2... somenetworkchanges
-=======
->>>>>>> parent of d0e19e2... somenetworkchanges
-
-                Debug.Log("Data Inserted");
-                
-                StartCoroutine(WaitFunction());
-                cnn.Close();
-
-            }
-                
-        
-                
-            }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
-                    Debug.Log("Failed Connection");  
-                    cnn.Close();
-            }
-
-        }
-
-    }*/
-//* END REALTIME UPDATE FUNCTION */
- 
-
-
- IEnumerator WaitFunction()
- {
-     yield return new WaitForSeconds(ping);
-     k = false;
- }
-
-
-
-
-
-
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-public class HolderClass : PrefabHandler
-{
-    public int goID { get; set; }
-}
-
-=======
->>>>>>> parent of d0e19e2... somenetworkchanges
-
-
-public class updateMovement
-{
-
-public updateMovement updatemovement = new updateMovement();
-public string SQL_DATABASE_NAME = "";
-public string SQL_USERNAME = "";
-public string SQL_PASSWORD = "";
-public string SQL_PORT = "";
-public string SQL_HOST = "";
-
-private string connectionString = null;
-MySql.Data.MySqlClient.MySqlConnection cnn;
-private string goName;
-private int goID;
-private float goTransformX, goTransformY, goTransformZ, goRotateX, goRotateY, goRotateZ;
-
-public int ServerRefreshRate;
-
-public int updateWaitTimer;
-private int goIndex;
-
-private int isOpen;
-bool k = false;
-int count = 0;
-private GameObject go;
-    private List<GameObject> goList = new List<GameObject>();
-    private List<int> allIds = new List<int>();
-
-
-
-    public void updater()
-    {
-             //sqlQueue = @"GameObjects";
-        connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
-        MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
-        using(cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString))
-        {
-     
-
-        try {
-
-                if (!k && go != null)
-                {
-                    k = true;
-                    cnn.Open();
-                    Debug.Log("Update Method");
-
-                        
-                        
-
-                    foreach (GameObject thisPrefab in goList)
-                    {
-                        int pID = thisPrefab.GetComponent<CombatHandler>().pID;
-
-                        //for(int j = 1; j <= goList.Count; j++)
-                        //{
-                        if(pID == go.GetComponent<CombatHandler>().pID && pID <= goList.Count && pID > 0)
-                        {
-                        string updateQuery = "UPDATE GameObjects SET TransformX = @TransformX,TransformY = @TransformY,TransformZ = @TransformZ, RotateX = @RotateX, RotateY = @RotateY, RotateZ = @RotateZ, WHERE id = '" + pID + "' AND isOpen = '1'";
-
-                        MySql.Data.MySqlClient.MySqlCommand updatecmd = new MySql.Data.MySqlClient.MySqlCommand(updateQuery, cnn);
-
-                        //cmd.Parameters.AddWithValue("@id", go.GetComponent<CombatHandler>().pID);
-                        
-                        updatecmd.Parameters.AddWithValue("@TransformX", thisPrefab.GetComponent<CombatHandler>().transform.position.x);
-                        updatecmd.Parameters.AddWithValue("@TransformY", thisPrefab.GetComponent<CombatHandler>().transform.position.y);
-                        updatecmd.Parameters.AddWithValue("@TransformZ", thisPrefab.GetComponent<CombatHandler>().transform.position.z);
-
-                        updatecmd.Parameters.AddWithValue("@RotateX", thisPrefab.GetComponent<CombatHandler>().transform.rotation.x);
-                        updatecmd.Parameters.AddWithValue("@RotateY", thisPrefab.GetComponent<CombatHandler>().transform.rotation.y);
-                        updatecmd.Parameters.AddWithValue("@RotateZ", thisPrefab.GetComponent<CombatHandler>().transform.rotation.z);
-
-                        updatecmd.CommandTimeout = 5;
-
-                        updatecmd.BeginExecuteNonQuery();
-                        
-                        //goTransformX = go.GetComponent<CombatHandler>().transform.position.x;
-                        //goTransformY = go.GetComponent<CombatHandler>().transform.position.y;
-                        //goTransformZ = go.GetComponent<CombatHandler>().transform.position.z;
-                        
-                        
-
-                        Debug.Log("Data Inserted");
-                       // }
-                        }
-                    }
-                }  
-                //k=false;
-=======
->>>>>>> parent of d0e19e2... somenetworkchanges
-
-
-
-
-
-
                 cnn.Close();
 
             }
@@ -360,12 +165,22 @@ private GameObject go;
                     cnn.Close();
             }
 
-        }   
+        }
+
     }
 
+ 
 
+
+ IEnumerator WaitFunction()
+ {
+     yield return new WaitForSeconds(ServerRefreshRate);
+     k = false;
+ }
 
 }
 
-
-
+public class HolderClass
+{
+    public int goID { get; set; }
+}

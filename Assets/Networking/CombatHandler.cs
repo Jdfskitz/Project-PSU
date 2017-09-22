@@ -8,8 +8,6 @@ public class CombatHandler : MonoBehaviour {
 	private Quaternion _lookRotation;
 	Animator anim;
 
-	PrefabHandler prefabHandler = new PrefabHandler();
-	//updateMovement updatemovement = new updateMovement();
 	
 	public float detectRadius = 300f;
 	public float meleeAttackRadius = 50f;
@@ -136,7 +134,6 @@ public class CombatHandler : MonoBehaviour {
 			this.anim.Play ("Walk");
 		}
 
-		prefabHandler.updatemovement.updater();
 	}
 
 	//Atack Coroutine Initialization
