@@ -35,9 +35,13 @@ bool k = false;
 int count = 0;
 private GameObject go;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private List<GameObject> goList = new List<GameObject>();
     private List<int> allIds = new List<int>();
 //List<int> allIds = new List<int>();
+=======
+
+>>>>>>> parent of d0e19e2... somenetworkchanges
 =======
 
 >>>>>>> parent of d0e19e2... somenetworkchanges
@@ -80,10 +84,13 @@ public void Start ()
                         goRotateZ = (int)GameObjectsDB[7];
                         goIndex = (int)GameObjectsDB[8];
 <<<<<<< HEAD
+<<<<<<< HEAD
                         isOpen = (int)GameObjectsDB[9];
 
                         allIds.Add((int)GameObjectsDB[1]);
 =======
+=======
+>>>>>>> parent of d0e19e2... somenetworkchanges
                         isOpen = (int)GameObjectsDB[9];                  
                             Debug.Log("goInfo Read");
 >>>>>>> parent of d0e19e2... somenetworkchanges
@@ -121,6 +128,7 @@ public void Start ()
      
 
         try {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
  
@@ -182,6 +190,8 @@ public void Start ()
 
 
 =======
+=======
+>>>>>>> parent of d0e19e2... somenetworkchanges
         if(!k)
         {
             k=true;
@@ -196,6 +206,9 @@ public void Start ()
                 cmd.Parameters.AddWithValue("@TransformZ", go.GetComponent<CombatHandler>().transform.position.z);
                 
                 cmd.BeginExecuteNonQuery();
+<<<<<<< HEAD
+>>>>>>> parent of d0e19e2... somenetworkchanges
+=======
 >>>>>>> parent of d0e19e2... somenetworkchanges
 
                 Debug.Log("Data Inserted");
@@ -232,6 +245,7 @@ public void Start ()
 
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 public class HolderClass : PrefabHandler
 {
@@ -330,6 +344,8 @@ private GameObject go;
                     }
                 }  
                 //k=false;
+=======
+>>>>>>> parent of d0e19e2... somenetworkchanges
 
 
 
