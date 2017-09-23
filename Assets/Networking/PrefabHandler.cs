@@ -12,24 +12,25 @@ public string SQL_PORT = "";
 public string SQL_HOST = "";
 
 private string connectionString = null;
-MySql.Data.MySqlClient.MySqlConnection cnn;
-private string goName;
-private int goID;
-private float goTransformX, goTransformY, goTransformZ, goRotateX, goRotateY, goRotateZ;
+public MySql.Data.MySqlClient.MySqlConnection cnn;
+public MySql.Data.MySqlClient.MySqlCommand cmd;
+public string goName;
+public int goID;
+public float goTransformX, goTransformY, goTransformZ, goRotateX, goRotateY, goRotateZ;
 
 public int ServerRefreshRate;
 
 public int updateWaitTimer;
-private int goIndex;
+public int goIndex;
 
-private int isOpen;
-int i = 0;
-bool t;
-bool k = false;
-int count = 0;
-private GameObject go;
-    private List<GameObject> goList = new List<GameObject>();
-    private List<int> allIds = new List<int>();
+public int isOpen;
+public int i = 0;
+public bool t;
+public bool k = false;
+public int count = 0;
+public GameObject go;
+    public List<GameObject> goList = new List<GameObject>();
+    public List<int> allIds = new List<int>();
 //List<int> allIds = new List<int>();
 
 
@@ -48,11 +49,6 @@ private GameObject go;
             cnn.Open();
             Debug.Log("Success");       
                 
-
-                //*CREATE TABLE GameObjects (Name VARCHAR(100) NOT NULL, GameObjectID INTEGER, TransformX INTEGER, TransformY INTEGER, TransformZ INTEGER, RotateX INTEGER, RotateY INTEGER, RotateZ INTEGER); */
-                //*INSERT INTO GameObjects (Name, GameObjectID, TransformX, TransformY, TransformZ, RotateX, RotateY, RotateZ) VALUES ( "" , , , , , , , ); */
-                //*EX: INSERT INTO GameObjects (Name, GameObjectID, TransformX, TransformY, TransformZ, RotateX, RotateY, RotateZ) VALUES ( "Skeleton" , 1, 295, 10, 120, 0, 80, 0); */
-
                 string GameObjectsRead = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects";
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(GameObjectsRead, cnn);
                 MySql.Data.MySqlClient.MySqlDataReader GameObjectsDB = cmd.ExecuteReader();
@@ -98,7 +94,9 @@ private GameObject go;
             }
         }
 }
+//*START UPDATE FUNCTION */
 
+/* 
 public void Update ()
 {
         //sqlQueue = @"GameObjects";
@@ -165,20 +163,22 @@ public void Update ()
                     cnn.Close();
             }
 
-        }
+        }*/
+        
+        //*END UPDATE FUNCTION */
 
     }
 
  
 
 
- IEnumerator WaitFunction()
+/* IEnumerator WaitFunction()
  {
      yield return new WaitForSeconds(ServerRefreshRate);
      k = false;
- }
+ }*/
 
-}
+
 
 public class HolderClass
 {

@@ -7,7 +7,8 @@ public class CombatHandler : MonoBehaviour {
 	public GameObject [] array;
 	private Quaternion _lookRotation;
 	Animator anim;
-
+	public GameObject tgo; 
+	public PrefabUpdater PrefabUpdater;
 	
 	public float detectRadius = 300f;
 	public float meleeAttackRadius = 50f;
@@ -16,6 +17,8 @@ public class CombatHandler : MonoBehaviour {
 	public float turnSpeed = 100f;
 	public float attackWait = 3;
 
+
+	private int serverWaitTime = 5;
 	public int TransformX;
 	public int TransformY;
 	public int TransformZ;
@@ -29,6 +32,7 @@ public class CombatHandler : MonoBehaviour {
 	private bool isWalking;
 	private bool isIdle;
 	private int i;
+	private bool k = false;
 
 	public int pID;
 	public Vector3 thisPosition;
@@ -37,10 +41,14 @@ public class CombatHandler : MonoBehaviour {
 	public int FactionID;
 	public int PrefabID;
 
+    public CombatHandler(PrefabUpdater prefabUpdater)
+    {
+        PrefabUpdater = prefabUpdater;
+    }
 
-	void Start()
+    void Start()
 	{
-
+		tgo = this.gameObject;
 		tempSpeed = speed;
 		anim = this.gameObject.GetComponent<Animator> ();
 	}
@@ -71,6 +79,7 @@ public class CombatHandler : MonoBehaviour {
 
 			if (distanceSqr < detectRadius) {
 				moving = true;
+
 			} else {
 				moving = false;
 			}
@@ -132,6 +141,14 @@ public class CombatHandler : MonoBehaviour {
 	{
 		if (isWalking && !meleeAttacking) {
 			this.anim.Play ("Walk");
+
+
+			/*if(!k)
+			{*/
+				PrefabUpdater.prefabUpdater(tgo.gameObject);
+			/*	k = true;
+				StartCoroutine(serverWait(serverWaitTime));
+			}*/
 		}
 
 	}
@@ -165,6 +182,12 @@ public class CombatHandler : MonoBehaviour {
 			yield return new WaitForSeconds(attackWait);
 			attackFinish();	
 			t = false;
+	}
+
+	private IEnumerator serverWait(int serverWaitTIme)
+	{
+		yield return new WaitForSeconds(serverWaitTime);
+		k = false;
 	}
 	
 	public void attackStart()
