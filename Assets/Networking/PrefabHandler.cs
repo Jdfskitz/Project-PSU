@@ -138,7 +138,8 @@ public GameObject go;
 			try{
 			connectionRefresh.Open();
 			Debug.Log("Connection");
-                string GameObjectsReadb = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects";
+                int pIDb = tgo.GetComponent<CombatHandler>().pID;
+                string GameObjectsReadb = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects WHERE id =" + pIDb;
                 MySql.Data.MySqlClient.MySqlCommand refresh = new MySql.Data.MySqlClient.MySqlCommand(GameObjectsReadb, connectionRefresh);
                 MySql.Data.MySqlClient.MySqlDataReader GameObjectsDBb = refresh.ExecuteReader();
  
@@ -159,7 +160,6 @@ public GameObject go;
                         Debug.Log(allIds + " Loaded");
 
                             Debug.Log("goInfo Read");
-            	        int pIDb = tgo.GetComponent<CombatHandler>().pID;
 
                             if(pIDb == goID)
                             {
