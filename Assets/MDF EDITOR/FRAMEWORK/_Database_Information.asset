@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e7e12a0717e154f885c51ce0b35ac2, type: 3}
+  m_Name: _Database_Information
+  m_EditorClassIdentifier: 
+  db_info:
+  - NAME: Prefabs
+    ID: 0
+    SAVED: 1
+    SAVED_DATABASE_NAME: Prefabs
+    asset_type: asset
+    database_class: DATABASE
+    database_location: Database
+    database_prefix: DB_
+    database_suffix: _DB
+    dropdown_bool_list: 
+    enable_custom_asset_type: 0
+    enable_custom_database_class: 0
+    enable_custom_location: 0
+    enable_custom_skin: 0
+    enable_database_prefix: 1
+    enable_database_suffix: 0
+    enable_shortcut: 0
+    enable_tabs: 0
+    hotkey1: 0
+    hotkey2: 0
+    information: SAMPLE INFO! PLEASE REPLACE THIS WITH YOUR OWN INFORMATION FOR YOUR
+      DATABASE!
+    shortcut_key: 
+    shortcut_letter: 
+    show_in_menu: 0
+    show_in_menu_name: 
+    skin_location: Assets/MDF EDITOR/FRAMEWORK/Skin/DatabaseGUISkin.guiskin
+    standalone: 0
+    tabs: []
+    tabs_per_row: 5
+    variables: []

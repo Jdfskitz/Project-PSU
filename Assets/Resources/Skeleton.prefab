@@ -1237,11 +1237,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   array: []
+  tgo: {fileID: 0}
   detectRadius: 300
   meleeAttackRadius: 15
   speed: 4
   turnSpeed: 3
   attackWait: 0.75
+  TransformX: 0
+  TransformY: 0
+  TransformZ: 0
+  pID: 0
+  thisPosition: {x: 0, y: 0, z: 0}
   AnimationState: 1
   FactionID: 9
   PrefabID: 0

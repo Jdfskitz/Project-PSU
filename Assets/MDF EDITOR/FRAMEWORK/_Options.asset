@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb6ef619dee4ec479dd166aa2750c8e, type: 3}
+  m_Name: _Options
+  m_EditorClassIdentifier: 
+  options_database:
+    BACKUP_LOCATION: Assets/MDF EDITOR/Backup
+    DATABASE_LOCATION: 
+    DEFAULT_ASSET_TYPE: asset
+    DEFAULT_BACKUP_DIRECTORY: Assets/MDF EDITOR/Backup
+    DEFAULT_DATABASE_CLASS: DATABASE
+    DEFAULT_DATABASE_DIRECTORY: Database
+    DEFAULT_DATABASE_PREFIX: DB_
+    DEFAULT_DATABASE_SUFFIX: _DB
+    DEFAULT_ENABLE_STANDALONE: 0
+    DEFAULT_HAS_TABS: 1
+    DEFAULT_TABS_IN_DATABASE: 5
+    ENABLE_DATABASE_PREFIX: 1
+    ENABLE_DATABASE_SUFFIX: 0
+    ENABLE_DEFAULT_BACKUP_FOLDER_NAME: 1
+    SHOW_DELETE_POPUP: 0
+    USE_DEFAULT_BACKUP_DIRECTORY: 1
+    USE_DEFAULT_DATABASE_DIRECTORY: 1

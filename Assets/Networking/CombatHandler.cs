@@ -8,8 +8,8 @@ public class CombatHandler : MonoBehaviour {
 	private Quaternion _lookRotation;
 	Animator anim;
 	public GameObject tgo; 
-	public PrefabUpdater PrefabUpdater;
-	
+	//PrefabHandler pHandler = new PrefabHandler();
+	PrefabHandler pHandler;
 	public float detectRadius = 300f;
 	public float meleeAttackRadius = 50f;
 	public float speed = .2f;
@@ -41,14 +41,11 @@ public class CombatHandler : MonoBehaviour {
 	public int FactionID;
 	public int PrefabID;
 
-    public CombatHandler(PrefabUpdater prefabUpdater)
-    {
-        PrefabUpdater = prefabUpdater;
-    }
+
 
     void Start()
 	{
-		tgo = this.gameObject;
+		pHandler = GameObject.FindObjectOfType<PrefabHandler>();
 		tempSpeed = speed;
 		anim = this.gameObject.GetComponent<Animator> ();
 	}
@@ -64,7 +61,6 @@ public class CombatHandler : MonoBehaviour {
 		{
 			AIEnemyEventHandler.startAttack();
 		}
-
 		
 	}
 
@@ -79,6 +75,13 @@ public class CombatHandler : MonoBehaviour {
 
 			if (distanceSqr < detectRadius) {
 				moving = true;
+		
+			if(!k)
+			{
+				k = true;
+				pHandler.prefabUpdater(this.gameObject);
+				StartCoroutine(serverWait(serverWaitTime));
+			}
 
 			} else {
 				moving = false;
@@ -143,12 +146,7 @@ public class CombatHandler : MonoBehaviour {
 			this.anim.Play ("Walk");
 
 
-			/*if(!k)
-			{*/
-				PrefabUpdater.prefabUpdater(tgo.gameObject);
-			/*	k = true;
-				StartCoroutine(serverWait(serverWaitTime));
-			}*/
+
 		}
 
 	}
