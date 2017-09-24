@@ -34,6 +34,7 @@ public class CombatHandler : MonoBehaviour {
 	private bool isIdle;
 	private int i;
 	private bool k = false;
+	private bool j = false;
 
 	public int pID;
 	public Vector3 thisPosition;
@@ -57,13 +58,19 @@ public class CombatHandler : MonoBehaviour {
 		MoveTowardsDetection();
 		idlePhase ();
 		walkingPhase ();
+		if(!j)
+		{
+		j = true;
+		pHandler.SQLRefresh(this.gameObject);
+			StartCoroutine(serverRefresh(pHandler.serverRefreshTime));
 
+		}
 		if(meleeAttacking)
 		{
 			AIEnemyEventHandler.startAttack();
 		}
-		
 	}
+	
 
 	//DETECTION FOR WALKING TOWARDS
 
@@ -81,7 +88,6 @@ public class CombatHandler : MonoBehaviour {
 			{
 				k = true;
 				pHandler.prefabUpdater(this.gameObject);
-				pHandler.SQLRefresh(this.gameObject);
 				StartCoroutine(serverWait(serverWaitTime));
 			}
 
@@ -188,6 +194,11 @@ public class CombatHandler : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(serverWaitTime);
 		k = false;
+	}
+	private IEnumerator serverRefresh(int serverRefreshTime)
+	{
+		yield return new WaitForSeconds(serverRefreshTime);
+		j = false;
 	}
 	
 	public void attackStart()

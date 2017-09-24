@@ -11,6 +11,8 @@ public string SQL_PASSWORD = "";
 public string SQL_PORT = "";
 public string SQL_HOST = "";
 
+public int serverRefreshTime;
+
 private string connectionString = null;
 public MySql.Data.MySqlClient.MySqlConnection cnn;
 public MySql.Data.MySqlClient.MySqlConnection connection;
