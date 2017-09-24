@@ -17,6 +17,7 @@ public class CombatHandler : MonoBehaviour {
 	public float turnSpeed = 100f;
 	public float attackWait = 3;
 
+	public int serverRefreshTime;
 
 	private int serverWaitTime = 5;
 	public int TransformX;
@@ -80,6 +81,7 @@ public class CombatHandler : MonoBehaviour {
 			{
 				k = true;
 				pHandler.prefabUpdater(this.gameObject);
+				pHandler.SQLRefresh(this.gameObject);
 				StartCoroutine(serverWait(serverWaitTime));
 			}
 

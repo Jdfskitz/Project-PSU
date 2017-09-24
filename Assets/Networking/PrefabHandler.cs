@@ -14,7 +14,7 @@ public string SQL_HOST = "";
 private string connectionString = null;
 public MySql.Data.MySqlClient.MySqlConnection cnn;
 public MySql.Data.MySqlClient.MySqlConnection connection;
-
+public MySql.Data.MySqlClient.MySqlConnection connectionRefresh;
 public MySql.Data.MySqlClient.MySqlCommand cmd;
 public string goName;
 public int goID;
@@ -121,12 +121,61 @@ public GameObject go;
 						Debug.Log("Data Inserted");
 
                         command.ExecuteNonQuery();      
-						
+                        tgo.transform.position = tgo.GetComponent<CombatHandler>().transform.position;
 				
 				}catch(MySql.Data.MySqlClient.MySqlException sqlEx){
 			}
 		}
 	}
+
+
+	public void SQLRefresh(GameObject tgo)
+	{
+        int pID = tgo.GetComponent<CombatHandler>().pID;
+        connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
+		using(connectionRefresh = new MySql.Data.MySqlClient.MySqlConnection(connectionString))
+        {
+			try{
+			connectionRefresh.Open();
+			Debug.Log("Connection");
+                string GameObjectsReadb = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects";
+                MySql.Data.MySqlClient.MySqlCommand refresh = new MySql.Data.MySqlClient.MySqlCommand(GameObjectsReadb, connectionRefresh);
+                MySql.Data.MySqlClient.MySqlDataReader GameObjectsDBb = refresh.ExecuteReader();
+ 
+                    while(GameObjectsDBb.Read())
+                    {
+                        goName = (string)GameObjectsDBb[0];
+                        goID = (int)GameObjectsDBb[1];
+                        goTransformX = (float)GameObjectsDBb[2];
+                        goTransformY = (float)GameObjectsDBb[3];
+                        goTransformZ = (float)GameObjectsDBb[4];
+                        goRotateX = (float)GameObjectsDBb[5];
+                        goRotateY = (float)GameObjectsDBb[6];
+                        goRotateZ = (float)GameObjectsDBb[7];
+                        goIndex = (int)GameObjectsDBb[8];
+                        isOpen = (int)GameObjectsDBb[9];
+
+                        allIds.Add((int)GameObjectsDBb[1]);
+                        Debug.Log(allIds + " Loaded");
+
+                            Debug.Log("goInfo Read");
+            	        int pIDb = tgo.GetComponent<CombatHandler>().pID;
+
+                            if(pIDb == goID)
+                            {
+                                tgo.transform.position = new Vector3(goTransformX,goTransformY,goTransformZ);
+                                Debug.Log("moved");
+                            }
+                    }
+
+                }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
+
+                }
+
+		}
+	}
+
+
 
     }
 
