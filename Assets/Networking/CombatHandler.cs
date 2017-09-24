@@ -61,7 +61,7 @@ public class CombatHandler : MonoBehaviour {
 		if(!j)
 		{
 		j = true;
-		pHandler.SQLRefresh(this.gameObject);
+		//pHandler.SQLRefresh(this.gameObject);
 			StartCoroutine(serverRefresh(pHandler.serverRefreshTime));
 
 		}

@@ -6982,7 +6982,7 @@ MonoBehaviour:
   SQL_PASSWORD: '!@12QWqw'
   SQL_PORT: 3306
   SQL_HOST: localhost
-  serverRefreshTime: 1
+  serverRefreshTime: 60
   goName: 
   goID: 0
   ServerRefreshRate: 5
