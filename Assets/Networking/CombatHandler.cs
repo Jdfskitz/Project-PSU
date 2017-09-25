@@ -21,7 +21,7 @@ public class CombatHandler : MonoBehaviour {
 
 	public int serverRefreshTime;
 
-	private int serverWaitTime = 5;
+	private float serverWaitTime = .25f;
 	public int meleeAttackDamage;
 	public int TransformX;
 	public int TransformY;
@@ -196,12 +196,12 @@ public class CombatHandler : MonoBehaviour {
 			t = false;
 	}
 
-	private IEnumerator serverWait(int serverWaitTIme)
+	private IEnumerator serverWait(float serverWaitTIme)
 	{
 		yield return new WaitForSeconds(serverWaitTime);
 		k = false;
 	}
-	private IEnumerator serverRefresh(int serverRefreshTime)
+	private IEnumerator serverRefresh(float serverRefreshTime)
 	{
 		yield return new WaitForSeconds(serverRefreshTime);
 		j = false;

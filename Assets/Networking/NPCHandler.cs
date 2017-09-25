@@ -11,7 +11,7 @@ public string SQL_PASSWORD = "";
 public string SQL_PORT = "";
 public string SQL_HOST = "";
 
-public int serverRefreshTime;
+public float serverRefreshTime;
 
 private string connectionString = null;
 public MySql.Data.MySqlClient.MySqlConnection cnn;
@@ -22,7 +22,7 @@ public string goName;
 public int goID;
 private float goTransformX, goTransformY, goTransformZ, goRotateX, goRotateY, goRotateZ;
 
-public int ServerRefreshRate;
+public float ServerRefreshRate;
 
 public int updateWaitTimer;
 public int goIndex;

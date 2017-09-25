@@ -6982,10 +6982,10 @@ MonoBehaviour:
   SQL_PASSWORD: '!@12QWqw'
   SQL_PORT: 3306
   SQL_HOST: localhost
-  serverRefreshTime: 5
+  serverRefreshTime: 0.25
   goName: 
   goID: 0
-  ServerRefreshRate: 5
+  ServerRefreshRate: 0.25
   updateWaitTimer: 0
   goIndex: 0
   isOpen: 0
@@ -6996,6 +6996,18 @@ MonoBehaviour:
   go: {fileID: 0}
   goList: []
   allIds: 
+  NPCName: 
+  NPCID: 0
+  NPCTransformX: 0
+  NPCTransformY: 0
+  NPCTransformZ: 0
+  NPCRotateX: 0
+  NPCRotateY: 0
+  NPCRotateZ: 0
+  NPCIndex: 0
+  NPCOpen: 0
+  NPCTransformPosition: {x: 0, y: 0, z: 0}
+  NPCTransformRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &746405353
 GameObject:
   m_ObjectHideFlags: 0
