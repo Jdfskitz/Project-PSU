@@ -21,7 +21,7 @@ public class CombatHandler : MonoBehaviour {
 
 	public int serverRefreshTime;
 
-	private float serverWaitTime = .25f;
+	private float serverWaitTime;
 	public int meleeAttackDamage;
 	public int TransformX;
 	public int TransformY;
@@ -54,6 +54,7 @@ public class CombatHandler : MonoBehaviour {
 		pHandler = GameObject.FindObjectOfType<NPCHandler>();
 		tempSpeed = speed;
 		anim = this.gameObject.GetComponent<Animator> ();
+		serverWaitTime = pHandler.ServerRefreshRate;
 	}
 
 	void Update () {
@@ -65,7 +66,7 @@ public class CombatHandler : MonoBehaviour {
 		if(!j)
 		{
 		j = true;
-		//pHandler.SQLRefresh(this.gameObject);
+			pHandler.SQLRefresh(this.gameObject);
 			StartCoroutine(serverRefresh(pHandler.serverRefreshTime));
 		}
 

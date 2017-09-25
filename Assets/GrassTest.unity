@@ -6982,10 +6982,10 @@ MonoBehaviour:
   SQL_PASSWORD: '!@12QWqw'
   SQL_PORT: 3306
   SQL_HOST: localhost
-  serverRefreshTime: 0.25
+  serverRefreshTime: 0.2
   goName: 
   goID: 0
-  ServerRefreshRate: 0.25
+  ServerRefreshRate: 0.025
   updateWaitTimer: 0
   goIndex: 0
   isOpen: 0
@@ -9813,13 +9813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387c7023e66a647ca9b8521ffbdf0a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 10
-  intellect: 10
-  agility: 10
-  spirit: 10
-  armor: 72
-  defense: 10
-  healthPoints: 144
 --- !u!114 &1027429963
 MonoBehaviour:
   m_ObjectHideFlags: 0

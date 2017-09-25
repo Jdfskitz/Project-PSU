@@ -182,12 +182,11 @@ public Vector3 NPCTransformRotation;
 
                             Debug.Log("goInfo Read");
 
-                            if(pIDb == goID)
+                            /*if(pIDb == goID)
                             {
                                 tgo.transform.position = new Vector3(goTransformX,goTransformY,goTransformZ);
                                 Debug.Log("moved");
-                            }
-
+                            }*/
 
                         NPCName = goName;
                         NPCID = goID;
@@ -211,6 +210,9 @@ public Vector3 NPCTransformRotation;
                 }
 
 		}
+
+            tgo.transform.position = NPCTransformPosition;
+            Debug.Log("Moved"+tgo.name);
 	}
 
     }
