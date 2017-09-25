@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MySql.Data.MySqlClient;
 
-public class PrefabHandler : MonoBehaviour {
+public class NPCHandler : MonoBehaviour {
 
 public string SQL_DATABASE_NAME = "";
 public string SQL_USERNAME = "";
@@ -39,23 +39,23 @@ public GameObject go;
 
 //List<int> allIds = new List<int>();
 
-//* DEFINING STRUCTURE FOR PREFAB POSITION DETECTION BASED ON 5 SECOND REFRESH TIMER*/
+//* DEFINING STRUCTURE FOR NPC POSITION DETECTION BASED ON 5 SECOND REFRESH TIMER*/
 
-public string prefabName;
-public int prefabID;                //Discover units based on if Prefab ID = pID
-public float prefabTransformX;
-public float prefabTransformY;
-public float prefabTransformZ;
-public float prefabRotateX;
-public float prefabRotateY;
-public float prefabRotateZ;
-public int prefabIndex;
-public int prefabOpen;
-public Vector3 prefabTransformPosition;
-public Vector3 prefabTransformRotation;
+public string NPCName;
+public int NPCID;                //Discover units based on if NPC ID = pID
+public float NPCTransformX;
+public float NPCTransformY;
+public float NPCTransformZ;
+public float NPCRotateX;
+public float NPCRotateY;
+public float NPCRotateZ;
+public int NPCIndex;
+public int NPCOpen;
+public Vector3 NPCTransformPosition;
+public Vector3 NPCTransformRotation;
 
 
-//* END DEFINITIONS FOR PREFAB POSITION DETECTION AND SOON TO BE STAT DETECTION*/
+//* END DEFINITIONS FOR NPC POSITION DETECTION AND SOON TO BE STAT DETECTION*/
 
 
     public void Start()
@@ -118,7 +118,7 @@ public Vector3 prefabTransformRotation;
         }
 }
 
-	public void prefabUpdater(GameObject tgo)
+	public void NPCUpdater(GameObject tgo)
 	{
         connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
 		using(connection = new MySql.Data.MySqlClient.MySqlConnection(connectionString))
@@ -189,18 +189,18 @@ public Vector3 prefabTransformRotation;
                             }
 
 
-                        prefabName = goName;
-                        prefabID = goID;
-                        prefabTransformX = goTransformX;
-                        prefabTransformY = goTransformY;
-                        prefabTransformZ = goTransformZ;
-                        prefabRotateX = goRotateX;
-                        prefabRotateY = goRotateY;
-                        prefabRotateZ = goRotateZ;
-                        prefabIndex = goIndex;
-                        prefabOpen = isOpen;
-                        prefabTransformPosition = new Vector3(prefabTransformX,prefabTransformY,prefabTransformZ);
-                        prefabTransformRotation = new Vector3(prefabRotateX,prefabRotateY,prefabRotateZ);
+                        NPCName = goName;
+                        NPCID = goID;
+                        NPCTransformX = goTransformX;
+                        NPCTransformY = goTransformY;
+                        NPCTransformZ = goTransformZ;
+                        NPCRotateX = goRotateX;
+                        NPCRotateY = goRotateY;
+                        NPCRotateZ = goRotateZ;
+                        NPCIndex = goIndex;
+                        NPCOpen = isOpen;
+                        NPCTransformPosition = new Vector3(NPCTransformX,NPCTransformY,NPCTransformZ);
+                        NPCTransformRotation = new Vector3(NPCRotateX,NPCRotateY,NPCRotateZ);
 
 
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour{
+public class PlayerStats{
 
 //PlayerInstantiator pInstantiator;
 
@@ -13,6 +13,7 @@ public int spirit;
 public int armor;
 public int defense;
 public int healthPoints;
+public int pID;
 
 //Private List<int> StatPoints = {strength, intellect, agility, spirit, armor, defense, healthpoints};
 

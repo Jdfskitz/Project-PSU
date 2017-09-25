@@ -8,9 +8,9 @@ public class CombatHandler : MonoBehaviour {
 	private Quaternion _lookRotation;
 	Animator anim;
 	public GameObject tgo; 
-	//PrefabHandler pHandler = new PrefabHandler();
-	PrefabHandler pHandler;
-	PrefabHandler pStats = new PrefabHandler();
+	//NPCHandler pHandler = new NPCHandler();
+	NPCHandler pHandler;
+	NPCHandler pStats = new NPCHandler();
 	public float detectRadius = 300f;
 	public float meleeAttackRadius = 50f;
 	public float speed = .2f;
@@ -45,13 +45,13 @@ public class CombatHandler : MonoBehaviour {
 	public int AnimationState = 1;
 
 	public int FactionID;
-	public int PrefabID;
+	public int NPCID;
 
 
 
     void Start()
 	{
-		pHandler = GameObject.FindObjectOfType<PrefabHandler>();
+		pHandler = GameObject.FindObjectOfType<NPCHandler>();
 		tempSpeed = speed;
 		anim = this.gameObject.GetComponent<Animator> ();
 	}
@@ -90,7 +90,7 @@ public class CombatHandler : MonoBehaviour {
 			if(!k)
 			{
 				k = true;
-				pHandler.prefabUpdater(this.gameObject);
+				pHandler.NPCUpdater(this.gameObject);
 				StartCoroutine(serverWait(serverWaitTime));
 			}
 
