@@ -1240,9 +1240,12 @@ MonoBehaviour:
   tgo: {fileID: 0}
   detectRadius: 300
   meleeAttackRadius: 15
-  speed: 4
+  speed: 2
   turnSpeed: 3
   attackWait: 0.75
+  target: {fileID: 0}
+  serverRefreshTime: 0
+  meleeAttackDamage: 0
   TransformX: 0
   TransformY: 0
   TransformZ: 0

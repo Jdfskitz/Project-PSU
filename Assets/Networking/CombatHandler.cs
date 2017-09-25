@@ -10,16 +10,19 @@ public class CombatHandler : MonoBehaviour {
 	public GameObject tgo; 
 	//PrefabHandler pHandler = new PrefabHandler();
 	PrefabHandler pHandler;
+	PrefabHandler pStats = new PrefabHandler();
 	public float detectRadius = 300f;
 	public float meleeAttackRadius = 50f;
 	public float speed = .2f;
 	private float tempSpeed;
 	public float turnSpeed = 100f;
 	public float attackWait = 3;
+	public GameObject target;
 
 	public int serverRefreshTime;
 
 	private int serverWaitTime = 5;
+	public int meleeAttackDamage;
 	public int TransformX;
 	public int TransformY;
 	public int TransformZ;
@@ -35,6 +38,7 @@ public class CombatHandler : MonoBehaviour {
 	private int i;
 	private bool k = false;
 	private bool j = false;
+	private bool serverRefreshed = false;
 
 	public int pID;
 	public Vector3 thisPosition;
@@ -63,8 +67,8 @@ public class CombatHandler : MonoBehaviour {
 		j = true;
 		//pHandler.SQLRefresh(this.gameObject);
 			StartCoroutine(serverRefresh(pHandler.serverRefreshTime));
-
 		}
+
 		if(meleeAttacking)
 		{
 			AIEnemyEventHandler.startAttack();
@@ -78,7 +82,6 @@ public class CombatHandler : MonoBehaviour {
 
 		foreach (GameObject go in array){
 
- 
 			float distanceSqr = (this.transform.position - go.transform.position).sqrMagnitude;
 
 			if (distanceSqr < detectRadius) {
@@ -181,6 +184,9 @@ public class CombatHandler : MonoBehaviour {
 			attackStart();
 			this.anim.Play ("Attack");
 			//Debug.Log ("IN ANIMATION ATTACK");
+			target = GameObject.FindGameObjectWithTag("Player");
+			//target.GetComponent<PlayerStats>().healthPoints -= this.meleeAttackDamage;
+
 			yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);	
 			attackMid();
 			this.anim.Play ("attackReady");
@@ -207,9 +213,6 @@ public class CombatHandler : MonoBehaviour {
 
 		if(!satk)
 		{
-			//* insert prior to swing functions here */
-
-
 			Debug.Log("hitStart");
 
 

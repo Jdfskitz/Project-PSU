@@ -35,8 +35,27 @@ public int count = 0;
 public GameObject go;
     public List<GameObject> goList = new List<GameObject>();
     public List<int> allIds = new List<int>();
+
+
 //List<int> allIds = new List<int>();
 
+//* DEFINING STRUCTURE FOR PREFAB POSITION DETECTION BASED ON 5 SECOND REFRESH TIMER*/
+
+public string prefabName;
+public int prefabID;                //Discover units based on if Prefab ID = pID
+public float prefabTransformX;
+public float prefabTransformY;
+public float prefabTransformZ;
+public float prefabRotateX;
+public float prefabRotateY;
+public float prefabRotateZ;
+public int prefabIndex;
+public int prefabOpen;
+public Vector3 prefabTransformPosition;
+public Vector3 prefabTransformRotation;
+
+
+//* END DEFINITIONS FOR PREFAB POSITION DETECTION AND SOON TO BE STAT DETECTION*/
 
 
     public void Start()
@@ -168,6 +187,23 @@ public GameObject go;
                                 tgo.transform.position = new Vector3(goTransformX,goTransformY,goTransformZ);
                                 Debug.Log("moved");
                             }
+
+
+                        prefabName = goName;
+                        prefabID = goID;
+                        prefabTransformX = goTransformX;
+                        prefabTransformY = goTransformY;
+                        prefabTransformZ = goTransformZ;
+                        prefabRotateX = goRotateX;
+                        prefabRotateY = goRotateY;
+                        prefabRotateZ = goRotateZ;
+                        prefabIndex = goIndex;
+                        prefabOpen = isOpen;
+                        prefabTransformPosition = new Vector3(prefabTransformX,prefabTransformY,prefabTransformZ);
+                        prefabTransformRotation = new Vector3(prefabRotateX,prefabRotateY,prefabRotateZ);
+
+
+
                     }
 
                 }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
@@ -176,8 +212,6 @@ public GameObject go;
 
 		}
 	}
-
-
 
     }
 
