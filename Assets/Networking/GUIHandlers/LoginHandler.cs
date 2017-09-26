@@ -75,7 +75,7 @@ public void callLogin(string AccountName, string PasswordField)
 					if(AccountName == accName && PasswordField == passWd)
 					{
 							SelectCharacter();
-							SceneManager.LoadScene("Game");
+							SceneManager.LoadScene("Game", LoadSceneMode.Single);
 
 					}else{
 						Debug.Log("Incorrect Password or Account Name");
