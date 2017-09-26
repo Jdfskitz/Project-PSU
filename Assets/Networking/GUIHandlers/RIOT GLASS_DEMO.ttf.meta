@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 846abafb68d424172aa6013c60292ce0
+timeCreated: 1506406182
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: RIOT GLASS
+  fontNames:
+  - RIOT GLASS
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
