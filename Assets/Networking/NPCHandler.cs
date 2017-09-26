@@ -211,7 +211,7 @@ public Vector3 NPCTransformRotation;
 
 		}
 
-            tgo.transform.position = NPCTransformPosition;
+            tgo.transform.position = Vector3.Slerp(tgo.transform.position, NPCTransformPosition, Time.deltaTime * tgo.GetComponent<CombatHandler>().speed);
             Debug.Log("Moved"+tgo.name);
 	}
 
