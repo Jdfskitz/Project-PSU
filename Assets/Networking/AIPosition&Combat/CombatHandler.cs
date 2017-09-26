@@ -38,6 +38,7 @@ public class CombatHandler : MonoBehaviour {
 	private int i;
 	private bool k = false;
 	private bool j = false;
+	private bool walkingChecker = false;
 	private bool serverRefreshed = false;
 
 	public int pID;
@@ -59,6 +60,17 @@ public class CombatHandler : MonoBehaviour {
 
 	void Update () {
 		array = GameObject.FindGameObjectsWithTag("Player");
+		if (transform.hasChanged)
+		{
+
+			if(!walkingChecker && !meleeAttacking)
+			{
+			walkingChecker = true;
+			this.anim.Play ("Walk");
+			StartCoroutine(walkingCheck());
+			}
+		}
+		//* If this position moves on x, y axis, set walking bool true, animate while walking */
 
 		MoveTowardsDetection();
 		idlePhase ();
@@ -195,6 +207,13 @@ public class CombatHandler : MonoBehaviour {
 			yield return new WaitForSeconds(attackWait);
 			attackFinish();	
 			t = false;
+	}
+
+	public IEnumerator walkingCheck()
+	{
+			this.anim.Play ("Attack");
+			yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);	
+			walkingChecker = false;
 	}
 
 	private IEnumerator serverWait(float serverWaitTIme)

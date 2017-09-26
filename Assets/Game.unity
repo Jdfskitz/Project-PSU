@@ -6982,10 +6982,10 @@ MonoBehaviour:
   SQL_PASSWORD: '!@12QWqw'
   SQL_PORT: 3306
   SQL_HOST: localhost
-  serverRefreshTime: 0.2
+  serverRefreshTime: 0.05
   goName: 
   goID: 0
-  ServerRefreshRate: 0.025
+  ServerRefreshRate: 0.005
   updateWaitTimer: 0
   goIndex: 0
   isOpen: 0
@@ -7784,7 +7784,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -7805,7 +7805,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.1
+  m_BounceIntensity: 0.4
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -9672,8 +9672,8 @@ MonoBehaviour:
   MoveWithMovingGround: 1
   RotateWithRotatingGround: 1
   GroundObjectAffectsJump: 1
-  SlidingThreshold: 40
-  FallingThreshold: 6
+  SlidingThreshold: 80
+  FallingThreshold: 24
   Gravity: 20
 --- !u!114 &1027429956
 MonoBehaviour:

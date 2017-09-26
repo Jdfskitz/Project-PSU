@@ -43,16 +43,9 @@ public GameObject go;
 
 public string NPCName;
 public int NPCID;                //Discover units based on if NPC ID = pID
-public float NPCTransformX;
-public float NPCTransformY;
-public float NPCTransformZ;
-public float NPCRotateX;
-public float NPCRotateY;
-public float NPCRotateZ;
-public int NPCIndex;
-public int NPCOpen;
-public Vector3 NPCTransformPosition;
-public Vector3 NPCTransformRotation;
+public float NPCTransformX, NPCTransformY, NPCTransformZ, NPCRotateX, NPCRotateY, NPCRotateZ;
+public int NPCIndex, NPCOpen;
+public Vector3 NPCTransformPosition, NPCTransformRotation;
 
 
 //* END DEFINITIONS FOR NPC POSITION DETECTION AND SOON TO BE STAT DETECTION*/
@@ -65,8 +58,6 @@ public Vector3 NPCTransformRotation;
         MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
         using(cnn = new MySql.Data.MySqlClient.MySqlConnection(connectionString))
         {
-     
-
         try {
                 
             cnn.Open();
@@ -105,9 +96,7 @@ public Vector3 NPCTransformRotation;
                             //Skeleton Spawner
                             Debug.Log(goID + " loaded");
                             }
-
                 }
-
 
                 GameObjectsDB.Close();     
                 
@@ -200,9 +189,6 @@ public Vector3 NPCTransformRotation;
                         NPCOpen = isOpen;
                         NPCTransformPosition = new Vector3(NPCTransformX,NPCTransformY,NPCTransformZ);
                         NPCTransformRotation = new Vector3(NPCRotateX,NPCRotateY,NPCRotateZ);
-
-
-
                     }
 
                 }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
