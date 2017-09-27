@@ -5,8 +5,10 @@ using UnityEngine.UI;
 using MySql.Data.MySqlClient;
 using UnityEngine.SceneManagement;
 
-public class LoginHandler : MonoBehaviour {
+public class LoginHandler : MonoBehaviour{
 
+public static LoginHandler instance;
+public List<string> charNames;
 public MySql.Data.MySqlClient.MySqlConnection cnn;
 public MySql.Data.MySqlClient.MySqlConnection connection;
 private string connectionString;
@@ -31,14 +33,25 @@ private int id, AccountID;
 
 
 
-
-[SerializeField]
 Text PassWord;
 
-[SerializeField]
+
 Text AccName;
+
+public void Awake(){
+	if(instance == null){
+		instance = this;
+	}else if(instance = this)
+	{
+		Destroy(gameObject);
+	}
+	DontDestroyOnLoad(instance);
+
+}
 public void UpdateText()
 {
+	PassWord = GameObject.Find("PassWord").GetComponent<UnityEngine.UI.Text>();
+	AccName = GameObject.Find("AccName").GetComponent<UnityEngine.UI.Text>();
 	AccountName = AccName.text.ToString();
 	PasswordField = PassWord.text.ToString();
 	Debug.Log("Account name is " + AccountName + " and the Password is " + PasswordField);
@@ -75,7 +88,6 @@ public void callLogin(string AccountName, string PasswordField)
 					if(AccountName == accName && PasswordField == passWd)
 					{
 							SelectCharacter();
-							SceneManager.LoadScene("Game", LoadSceneMode.Single);
 
 					}else{
 						Debug.Log("Incorrect Password or Account Name");
@@ -129,11 +141,12 @@ public void SelectCharacter()
 						Debug.Log("goInfo Read");
 
 						Debug.Log(charName+" is your selected character\n");
+						charNames.Add(charName);
 
 				}
-
-			CharactersDB.Close();     
 			
+			CharactersDB.Close();     
+			SceneManager.LoadScene("CharacterSelection", LoadSceneMode.Single);
 		}catch(MySql.Data.MySqlClient.MySqlException sqlEx){
 				Debug.Log("Failed Connection");  
 				cnn.Close();

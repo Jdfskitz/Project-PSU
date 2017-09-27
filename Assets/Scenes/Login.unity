@@ -572,6 +572,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &650187574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 650187576}
+  - component: {fileID: 650187575}
+  m_Layer: 0
+  m_Name: LoginManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &650187575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650187574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7f0ae881c6c4596a376050007af46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charNames: []
+  SQL_HOST: localhost
+  SQL_DATABASE_NAME: Prefabs
+  SQL_USERNAME: unityroot
+  SQL_PASSWORD: '!@12QWqw'
+  SQL_PORT: 3306
+  AccountName: 
+  PasswordField: 
+  charName: 
+  TransformX: 0
+  TransformY: 0
+  TransformZ: 0
+  RotateX: 0
+  RotateY: 0
+  RotateZ: 0
+  loggedIn: 0
+  charId: 0
+  goID: 0
+  charAccountID: 0
+--- !u!4 &650187576
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650187574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 539.55945, y: 331.7097, z: -540.72424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716145765
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +642,6 @@ GameObject:
   - component: {fileID: 716145768}
   - component: {fileID: 716145767}
   - component: {fileID: 716145766}
-  - component: {fileID: 716145770}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -671,37 +729,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &716145770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 716145765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7f0ae881c6c4596a376050007af46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SQL_HOST: localhost
-  SQL_DATABASE_NAME: Prefabs
-  SQL_USERNAME: unityroot
-  SQL_PASSWORD: '!@12QWqw'
-  SQL_PORT: 3306
-  AccountName: 
-  PasswordField: 
-  charName: 
-  TransformX: 0
-  TransformY: 0
-  TransformZ: 0
-  RotateX: 0
-  RotateY: 0
-  RotateZ: 0
-  loggedIn: 0
-  charId: 0
-  goID: 0
-  charAccountID: 0
-  PassWord: {fileID: 0}
-  AccName: {fileID: 0}
 --- !u!1 &736065613
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +885,6 @@ GameObject:
   - component: {fileID: 1093867355}
   - component: {fileID: 1093867354}
   - component: {fileID: 1093867353}
-  - component: {fileID: 1093867352}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -866,37 +892,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1093867352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093867351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7f0ae881c6c4596a376050007af46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SQL_HOST: localhost
-  SQL_DATABASE_NAME: Prefabs
-  SQL_USERNAME: unityroot
-  SQL_PASSWORD: '!@12QWqw'
-  SQL_PORT: 3306
-  AccountName: 
-  PasswordField: 
-  charName: 
-  TransformX: 0
-  TransformY: 0
-  TransformZ: 0
-  RotateX: 0
-  RotateY: 0
-  RotateZ: 0
-  loggedIn: 0
-  charId: 0
-  goID: 0
-  charAccountID: 0
-  PassWord: {fileID: 1388485302}
-  AccName: {fileID: 241716099}
 --- !u!81 &1093867353
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1523,7 +1518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1093867352}
+      - m_Target: {fileID: 650187575}
         m_MethodName: UpdateText
         m_Mode: 1
         m_Arguments:

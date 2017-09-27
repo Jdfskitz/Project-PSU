@@ -6037,7 +6037,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5a5216ee886678440a39c888e7ef3a60, type: 2}
+  - {fileID: 2100000, guid: 784f87b7a74054275b20c41afa16416b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7202,7 +7202,7 @@ GameObject:
   - component: {fileID: 769486274}
   - component: {fileID: 769486278}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8470,7 +8470,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5a5216ee886678440a39c888e7ef3a60, type: 2}
+  - {fileID: 2100000, guid: 784f87b7a74054275b20c41afa16416b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12473,7 +12473,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5a5216ee886678440a39c888e7ef3a60, type: 2}
+  - {fileID: 2100000, guid: 784f87b7a74054275b20c41afa16416b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14976,7 +14976,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5a5216ee886678440a39c888e7ef3a60, type: 2}
+  - {fileID: 2100000, guid: 784f87b7a74054275b20c41afa16416b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16058,7 +16058,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5a5216ee886678440a39c888e7ef3a60, type: 2}
+  - {fileID: 2100000, guid: 784f87b7a74054275b20c41afa16416b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
