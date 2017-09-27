@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Background: {fileID: 12022108}
+  charNameText: {fileID: 0}
   nameList: []
 --- !u!81 &1538337752
 AudioListener:
@@ -357,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Background: {fileID: 12022108}
+  charNameText: {fileID: 0}
   nameList: []
 --- !u!1 &1604714215
 GameObject:
