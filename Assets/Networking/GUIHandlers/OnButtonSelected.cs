@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class OnButtonSelected : MonoBehaviour {
 
-public int selectedNo;
+public string selectedNa;
 
 }

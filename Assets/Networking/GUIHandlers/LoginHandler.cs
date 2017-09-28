@@ -13,11 +13,12 @@ public MySql.Data.MySqlClient.MySqlConnection cnn;
 public MySql.Data.MySqlClient.MySqlConnection connection;
 private string connectionString;
 
-public string SQL_HOST, SQL_DATABASE_NAME, SQL_USERNAME, SQL_PASSWORD,SQL_PORT;
+public string SQL_HOST;
+private string SQL_DATABASE_NAME = "Prefabs", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
 
 public string AccountName, PasswordField;
 private string accName, passWd;
-private int id, AccountID;
+public int id, AccountID;
 
 					public string charName;
 					public float TransformX;

@@ -5,11 +5,8 @@ using MySql.Data.MySqlClient;
 
 public class NPCHandler : MonoBehaviour {
 
-public string SQL_DATABASE_NAME = "";
-public string SQL_USERNAME = "";
-public string SQL_PASSWORD = "";
-public string SQL_PORT = "";
-public string SQL_HOST = "";
+public string SQL_HOST;
+private string SQL_DATABASE_NAME = "Prefabs", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
 
 public float serverRefreshTime;
 
