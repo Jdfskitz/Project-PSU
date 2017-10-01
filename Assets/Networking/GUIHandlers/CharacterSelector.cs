@@ -27,10 +27,25 @@ public List <int> charSelected;
 
 private int i;
 
+[SerializeField]
+GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10;
+
 	// Use this for initialization
 	void Start () {
 		nameList = LoginHandler.instance.charNames.ToArray();
 		Debug.Log(nameList.Length);
+
+		Button BtnChar1 = char1.GetComponent<Button>();
+		Button BtnChar2 = char2.GetComponent<Button>();
+		Button BtnChar3 = char3.GetComponent<Button>();
+		Button BtnChar4 = char4.GetComponent<Button>();
+		Button BtnChar5 = char5.GetComponent<Button>();
+		Button BtnChar6 = char6.GetComponent<Button>();
+		Button BtnChar7 = char7.GetComponent<Button>();
+		Button BtnChar8 = char8.GetComponent<Button>();
+		Button BtnChar9 = char9.GetComponent<Button>();
+		Button BtnChar10 = char10.GetComponent<Button>();
+
 
 	foreach(string PlayerName in nameList)
 		{
@@ -40,8 +55,7 @@ private int i;
 			charSelector.GetComponent<OnButtonSelected>().selectedNa = PlayerName;
 			charSelector.transform.SetParent(Background);
 			i++;
-		Button btn = charSelector.GetComponent<Button>();
-		btn.onClick.AddListener(delegate{setSelected(playerName);});
+		//btn.onClick.AddListener(delegate{setSelected(playerName);});
 
 		}
 
