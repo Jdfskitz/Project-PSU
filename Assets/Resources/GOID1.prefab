@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab24fa53157c21c4cb88b6f8b776da9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OcclusionHandling: 1
+  OcclusionHandling: 2
   OccludingLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -1042,8 +1042,8 @@ MonoBehaviour:
   MoveWithMovingGround: 1
   RotateWithRotatingGround: 1
   GroundObjectAffectsJump: 1
-  SlidingThreshold: 40
-  FallingThreshold: 6
+  SlidingThreshold: 80
+  FallingThreshold: 12
   Gravity: 20
 --- !u!114 &114781059277528290
 MonoBehaviour:

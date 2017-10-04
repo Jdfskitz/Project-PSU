@@ -15,7 +15,7 @@ private string connectionString;
 public string selectedName;
 public int selectedID;
 public string SQL_HOST;
-private string SQL_DATABASE_NAME = "Prefabs", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
+private string SQL_DATABASE_NAME = "accounts", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
 
 			public string playerName;
 			public float pTransformX, pTransformY, pTransformZ, pRotateX, pRotateY, pRotateZ;

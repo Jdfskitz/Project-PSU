@@ -7968,13 +7968,13 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -7987,9 +7987,9 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.4
+  m_BounceIntensity: 0.8
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -9098,10 +9098,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SQL_HOST: localhost
-  serverRefreshTime: 0
+  serverRefreshTime: 0.75
   goName: 
   goID: 0
-  ServerRefreshRate: 0
+  ServerRefreshRate: 0.5
   updateWaitTimer: 0
   goIndex: 0
   isOpen: 0

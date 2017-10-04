@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 public class NPCHandler : MonoBehaviour {
 
 public string SQL_HOST;
-private string SQL_DATABASE_NAME = "Prefabs", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
+private string SQL_DATABASE_NAME = "world", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
 
 public float serverRefreshTime;
 
@@ -74,8 +74,8 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
                         goRotateX = (float)GameObjectsDB[5];
                         goRotateY = (float)GameObjectsDB[6];
                         goRotateZ = (float)GameObjectsDB[7];
-                        goIndex = (int)GameObjectsDB[8];
-                        isOpen = (int)GameObjectsDB[9];
+                        goIndex = (int)GameObjectsDB[9];
+                        isOpen = (int)GameObjectsDB[8];
 
                         allIds.Add((int)GameObjectsDB[1]);
                         Debug.Log(allIds + " Loaded");
@@ -194,6 +194,7 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
 
 		}
 
+            //tgo.transform.Rotate(NPCTransformRotation);
             tgo.transform.position = Vector3.Slerp(tgo.transform.position, NPCTransformPosition, Time.deltaTime * tgo.GetComponent<CombatHandler>().speed);
             Debug.Log("Moved"+tgo.name);
 	}

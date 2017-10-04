@@ -14,7 +14,7 @@ public MySql.Data.MySqlClient.MySqlConnection connection;
 private string connectionString;
 
 public string SQL_HOST;
-private string SQL_DATABASE_NAME = "Prefabs", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
+private string SQL_DATABASE_NAME = "accounts", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
 
 public string AccountName, PasswordField;
 private string accName, passWd;
