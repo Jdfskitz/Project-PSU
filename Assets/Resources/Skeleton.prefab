@@ -1236,8 +1236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e0daccccff4c65be4d842ed061ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  array: []
-  tgo: {fileID: 0}
+  array:
+  - {fileID: 1232186360731988, guid: 8b7c264e00c7c40819b147891e3c7675, type: 2}
+  tgo: {fileID: 1232186360731988, guid: 8b7c264e00c7c40819b147891e3c7675, type: 2}
   detectRadius: 300
   meleeAttackRadius: 15
   speed: 2
@@ -1253,7 +1254,7 @@ MonoBehaviour:
   thisPosition: {x: 0, y: 0, z: 0}
   AnimationState: 1
   FactionID: 9
-  PrefabID: 0
+  NPCID: 0
 --- !u!137 &137241450228940704
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

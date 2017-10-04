@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MySql.Data.MySqlClient;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelector : MonoBehaviour{
+
+public static CharacterSelector instance;
 public MySql.Data.MySqlClient.MySqlConnection cnn;
 public MySql.Data.MySqlClient.MySqlConnection connection;
 private string connectionString;
 
+public string selectedName;
+public int selectedID;
 public string SQL_HOST;
 private string SQL_DATABASE_NAME = "Prefabs", SQL_USERNAME = "unityroot" , SQL_PASSWORD = "!@12QWqw" ,SQL_PORT = "3306";
 
@@ -22,13 +27,26 @@ Transform Background;
 
 public Text charNameText;
 public string selectedChar;
-public string [] nameList; 
+public string [] nameList = new string[10]; 
 public List <int> charSelected;
 
 private int i;
 
 [SerializeField]
 GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10;
+
+
+
+	public void Awake(){
+		if(instance == null){
+			instance = this;
+		}else if(instance = this)
+		{
+			Destroy(gameObject);
+		}
+		DontDestroyOnLoad(instance);
+	}
+
 
 	// Use this for initialization
 	void Start () {
@@ -47,37 +65,74 @@ GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10
 		Button BtnChar10 = char10.GetComponent<Button>();
 
 
-	foreach(string PlayerName in nameList)
+	if(nameList != null)
+	{
+		if(nameList.Length > 0)
 		{
-			charSelector = (GameObject)Instantiate(Resources.Load("charSelection"),new Vector3(Screen.width/10,Screen.height/2 + i*60,0),Quaternion.Euler(0,0,0));
-			charSelector.GetComponentInChildren<Text>().text = PlayerName;
-			//charSelected.Add(i);
-			charSelector.GetComponent<OnButtonSelected>().selectedNa = PlayerName;
-			charSelector.transform.SetParent(Background);
-			i++;
-		//btn.onClick.AddListener(delegate{setSelected(playerName);});
-
+		char1.GetComponentInChildren<Text>().text = nameList[0];
+		BtnChar1.onClick.AddListener(delegate{clickSelect(1, nameList[0]);});
 		}
 
-		//Instantiate Selection Buttons
+		if(nameList.Length > 1)
+		{
+		char2.GetComponentInChildren<Text>().text = nameList[1];
+		BtnChar2.onClick.AddListener(delegate{clickSelect(2, nameList[1]);});
+		}
+
+		if(nameList.Length > 2)
+		{
+		char3.GetComponentInChildren<Text>().text = nameList[2];
+		BtnChar3.onClick.AddListener(delegate{clickSelect(3, nameList[2]);});
+		}
+
+		if(nameList.Length > 3)
+		{
+		char4.GetComponentInChildren<Text>().text = nameList[3];
+		BtnChar4.onClick.AddListener(delegate{clickSelect(4, nameList[3]);});
+		}
+		if(nameList.Length > 4)
+		{
+		char5.GetComponentInChildren<Text>().text = nameList[4];
+		BtnChar5.onClick.AddListener(delegate{clickSelect(5, nameList[4]);});
+		}
+		if(nameList.Length > 5)
+		{
+		char6.GetComponentInChildren<Text>().text = nameList[5];
+		BtnChar6.onClick.AddListener(delegate{clickSelect(6, nameList[5]);});
+		}
+		if(nameList.Length > 6)
+		{
+		char7.GetComponentInChildren<Text>().text = nameList[6];
+		BtnChar7.onClick.AddListener(delegate{clickSelect(7, nameList[6]);});
+		}
+		if(nameList.Length > 7)
+		{
+		char8.GetComponentInChildren<Text>().text = nameList[7];
+		BtnChar8.onClick.AddListener(delegate{clickSelect(8, nameList[7]);});
+		}
+		if(nameList.Length > 8)
+		{
+		char9.GetComponentInChildren<Text>().text = nameList[8];
+		BtnChar9.onClick.AddListener(delegate{clickSelect(9, nameList[8]);});
+		}
+		if(nameList.Length > 9)
+		{
+		char10.GetComponentInChildren<Text>().text = nameList[9];
+		BtnChar10.onClick.AddListener(delegate{clickSelect(10, nameList[9]);});
+		}
+	}
+		
 	}
 
-	public void characterCreation()
+	public void clickSelect(int selected, string name)
 	{
-		//on character creation, insert into accounts where accounts == AccountID character Number
-		//set Max Character Limit
+		selectedID = selected;
+		selectedName = name;
+		setSelected();
+		
 	}
 
-	public void setSelected(string charID){
-	Debug.Log(charID);
-
-
-//* WORKING HERE, TRYING TO GET THE SCRIPT TO PULL THE STRING FROM THE BUTTON CLICK ON WHAT STRING TO GRAB */
-
-
-	//selectedChar = charName.ToString();
-	selectedChar = charID;
-	//selectedChar = charSelector.GetComponent<OnButtonSelected>().selectedNa;
+	public void setSelected(){
 		
 	connectionString = "server=" + SQL_HOST + ";" + "database=" + SQL_DATABASE_NAME + ";" + "user=" + SQL_USERNAME + ";" + "password=" + SQL_PASSWORD + ";" + "port=" + SQL_PORT + ";";
 	MySql.Data.MySqlClient.MySqlBulkLoader ObjectLoader = new MySql.Data.MySqlClient.MySqlBulkLoader(cnn);
@@ -88,7 +143,7 @@ GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10
 		cnn.Open();
 		Debug.Log("Success");       
 			
-			string ReadPlayer = "SELECT * FROM Characters WHERE name ='" + selectedChar + "';";
+			string ReadPlayer = "SELECT * FROM Characters WHERE name ='" + selectedName + "';";
 			MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(ReadPlayer, cnn);
 			MySql.Data.MySqlClient.MySqlDataReader CharactersDB = cmd.ExecuteReader();
 
@@ -110,6 +165,7 @@ GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10
 
 				Debug.Log(playerName + " is Selected");
 				characterCreation();
+
 			CharactersDB.Close();     
 			
 		}catch(MySql.Data.MySqlClient.MySqlException sqlEx){
@@ -121,6 +177,11 @@ GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10
 		//Select from Characters GameObjectID where SelectedNa = name and AccountID = LoginHandler.instance.accID
 		//do things
 
+	}
+
+	public void characterCreation()
+	{
+		SceneManager.LoadScene("Game", LoadSceneMode.Single);
 	}
 	public void Login(){
 

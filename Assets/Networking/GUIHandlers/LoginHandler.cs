@@ -142,8 +142,7 @@ public void SelectCharacter()
 						Debug.Log("goInfo Read");
 
 						Debug.Log(charName+" is your selected character\n");
-						charNames.Add(charName);
-
+						charNames.Add(charName);	
 				}
 			
 			CharactersDB.Close();     

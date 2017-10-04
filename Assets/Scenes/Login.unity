@@ -601,12 +601,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charNames: []
   SQL_HOST: localhost
-  SQL_DATABASE_NAME: Prefabs
-  SQL_USERNAME: unityroot
-  SQL_PASSWORD: '!@12QWqw'
-  SQL_PORT: 3306
   AccountName: 
   PasswordField: 
+  id: 0
+  AccountID: 0
   charName: 
   TransformX: 0
   TransformY: 0
@@ -886,7 +884,7 @@ GameObject:
   - component: {fileID: 1093867354}
   - component: {fileID: 1093867353}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
