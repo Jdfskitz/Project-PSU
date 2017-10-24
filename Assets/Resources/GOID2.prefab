@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 114121402199765988}
   - component: {fileID: 114726203306650156}
   - component: {fileID: 95498096978304508}
+  - component: {fileID: 114261749306414896}
   m_Layer: 8
   m_Name: GOID2
   m_TagString: Player
@@ -4269,7 +4270,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444697156784990}
-  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.060806744}
+  m_LocalRotation: {x: -0.093746535, y: 0.6978551, z: 0.707469, w: 0.060806736}
   m_LocalPosition: {x: -0.05543403, y: 0.0017306843, z: 0.098653734}
   m_LocalScale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
   m_Children:
@@ -5142,6 +5143,18 @@ MonoBehaviour:
   CharacterFadeOutAlpha: 0
   CharacterFadeStartDistance: 1.2
   CharacterFadeEndDistance: 0.8
+--- !u!114 &114261749306414896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431434978727516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb601725fc9c6d4c8ba4750576634e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverRefreshTime: 0
 --- !u!114 &114726203306650156
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -57,8 +57,7 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
         {
         try {
                 
-            cnn.Open();
-            Debug.Log("Success");       
+            cnn.Open();   
                 
                 string GameObjectsRead = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects";
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(GameObjectsRead, cnn);
@@ -78,9 +77,7 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
                         isOpen = (int)GameObjectsDB[8];
 
                         allIds.Add((int)GameObjectsDB[1]);
-                        Debug.Log(allIds + " Loaded");
 
-                            Debug.Log("goInfo Read");
 
                             if(goID == 1 && isOpen == 1)
                             {
@@ -89,17 +86,16 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
                             go.GetComponent<CombatHandler>().pID = goIndex;
                             goList.Add(go);
                             isOpen = 0;
-                            Debug.Log("Object Spawned");
                             //Skeleton Spawner
                             Debug.Log(goID + " loaded");
                             }
                 }
 
-                GameObjectsDB.Close();     
+                GameObjectsDB.Close();
+                cnn.Close();     
                 
             }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
-                    Debug.Log("Failed Connection");  
-                    cnn.Close();
+                cnn.Close();
             }
         }
 }
@@ -111,7 +107,6 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
         {
 			try{
 			connection.Open();
-			Debug.Log("Connection");
 
 				        int pID = tgo.GetComponent<CombatHandler>().pID;
                         string updateQuery = "UPDATE GameObjects SET TransformX=@TransformX, TransformY=@TransformY, TransformZ=@TransformZ, RotateX=@RotateX, RotateY=@RotateY, RotateZ=@RotateZ WHERE id=" + pID;
@@ -125,12 +120,13 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
                         command.Parameters.AddWithValue("@RotateY", tgo.GetComponent<CombatHandler>().transform.rotation.y);
                         command.Parameters.AddWithValue("@RotateZ", tgo.GetComponent<CombatHandler>().transform.rotation.z);
 
-						Debug.Log("Data Inserted");
 
                         command.ExecuteNonQuery();      
                         tgo.transform.position = tgo.GetComponent<CombatHandler>().transform.position;
 				
+                connection.Close();
 				}catch(MySql.Data.MySqlClient.MySqlException sqlEx){
+                    connection.Close();
 			}
 		}
 	}
@@ -144,7 +140,6 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
         {
 			try{
 			connectionRefresh.Open();
-			Debug.Log("Connection");
                 int pIDb = tgo.GetComponent<CombatHandler>().pID;
                 string GameObjectsReadb = "SELECT Name,GameObjectID,TransformX,TransformY,TransformZ,RotateX,RotateY,RotateZ,id,isOpen FROM GameObjects WHERE id =" + pIDb;
                 MySql.Data.MySqlClient.MySqlCommand refresh = new MySql.Data.MySqlClient.MySqlCommand(GameObjectsReadb, connectionRefresh);
@@ -166,7 +161,6 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
                         allIds.Add((int)GameObjectsDBb[1]);
                         Debug.Log(allIds + " Loaded");
 
-                            Debug.Log("goInfo Read");
 
                             /*if(pIDb == goID)
                             {
@@ -187,9 +181,9 @@ public Vector3 NPCTransformPosition, NPCTransformRotation;
                         NPCTransformPosition = new Vector3(NPCTransformX,NPCTransformY,NPCTransformZ);
                         NPCTransformRotation = new Vector3(NPCRotateX,NPCRotateY,NPCRotateZ);
                     }
-
+                connectionRefresh.Close();
                 }catch(MySql.Data.MySqlClient.MySqlException sqlEx){
-
+                connectionRefresh.Close();
                 }
 
 		}

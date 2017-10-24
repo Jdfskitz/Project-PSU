@@ -9079,6 +9079,7 @@ GameObject:
   - component: {fileID: 924170733}
   - component: {fileID: 924170732}
   - component: {fileID: 924170731}
+  - component: {fileID: 924170734}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -9150,6 +9151,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924170734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924170730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee87caddece2fc346bf2309a899daf90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SQL_HOST: localhost
+  serverRefreshTime: 0.75
+  pName: 
+  pID: 0
+  goID: 0
+  accID: 0
+  charID: 0
+  ServerRefreshRate: 0.5
+  updateWaitTimer: 0
+  pIndex: 0
+  isOpen: 0
+  i: 0
+  t: 0
+  k: 0
+  count: 0
+  Player: {fileID: 0}
+  PlayerList: []
+  allIds: 
+  PlayerName: 
+  PlayerID: 0
+  PlayerTransformX: 0
+  PlayerTransformY: 0
+  PlayerTransformZ: 0
+  PlayerRotateX: 0
+  PlayerRotateY: 0
+  PlayerRotateZ: 0
+  PlayerIndex: 0
+  PlayerOpen: 0
+  PlayerTransformPosition: {x: 0, y: 0, z: 0}
+  PlayerTransformRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &928063681
 GameObject:
   m_ObjectHideFlags: 0
@@ -13879,7 +13921,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1427963534}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1270885152}

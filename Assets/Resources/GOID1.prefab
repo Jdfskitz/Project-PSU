@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114781059277528290}
   - component: {fileID: 114432544345841126}
   - component: {fileID: 95416195396149988}
+  - component: {fileID: 114661085741078416}
   m_Layer: 8
   m_Name: GOID1
   m_TagString: Player
@@ -1045,6 +1046,19 @@ MonoBehaviour:
   SlidingThreshold: 80
   FallingThreshold: 12
   Gravity: 20
+--- !u!114 &114661085741078416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232186360731988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb601725fc9c6d4c8ba4750576634e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverRefreshTime: 0
+  speed: 5
 --- !u!114 &114781059277528290
 MonoBehaviour:
   m_ObjectHideFlags: 1

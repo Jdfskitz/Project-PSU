@@ -35,8 +35,6 @@ private int i;
 [SerializeField]
 GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10;
 
-
-
 	public void Awake(){
 		if(instance == null){
 			instance = this;
@@ -156,7 +154,7 @@ GameObject char1, char2, char3, char4, char5, char6, char7, char8, char9, char10
 					pRotateX = (float)CharactersDB[4];
 					pRotateY = (float)CharactersDB[5];
 					pRotateZ = (float)CharactersDB[6];
-//					LoggedIn = (int)CharactersDB[7];
+					LoggedIn = (int)CharactersDB[7];
 					pID = (int)CharactersDB[8];
 					goID = (int)CharactersDB[9];
 					accID = (int)CharactersDB[10];
